@@ -57,7 +57,7 @@ export default function AdminLoginPage() {
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="admin@vps.com"
+                                placeholder="admin@vbs.com"
                                 required
                                 className="w-full bg-gray-50/50 border-2 border-gray-100 text-gray-900 placeholder-gray-400 rounded-xl px-4 py-3.5 focus:outline-none focus:border-primary-400 focus:ring-4 focus:ring-primary-500/10 transition-all font-medium"
                             />
