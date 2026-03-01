@@ -67,7 +67,7 @@ export default function ClientEnhancements() {
 
             {/* Premium Light Glass Page Loader Overlay */}
             <div
-                className={`fixed inset-0 z-[10000] flex items-center justify-center bg-slate-50/70 backdrop-blur-2xl transition-opacity duration-500 ease-in-out pointer-events-none ${loading ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+                className={`fixed inset-0 z-[10000] flex items-center justify-center bg-[#EDF4FF]/70 backdrop-blur-2xl transition-opacity duration-500 ease-in-out pointer-events-none ${loading ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
             >
                 <div className="relative w-16 h-16 flex items-center justify-center animate-pulse">
                     <div className="absolute inset-0 border-[4px] border-primary-500/80 rounded-lg skew-x-[-12deg] skew-y-[12deg] animate-[spin_3s_linear_infinite]" />

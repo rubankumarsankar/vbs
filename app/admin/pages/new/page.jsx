@@ -69,7 +69,7 @@ export default function NewCMSPage() {
 
 
                     {/* Metadata Card */}
-                    <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm">
+                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)]">
                         <h2 className="text-xl font-extrabold text-gray-900 mb-6">Page Settings</h2>
 
                         <div className="space-y-5">
@@ -81,13 +81,13 @@ export default function NewCMSPage() {
                                     value={formData.title}
                                     onChange={handleTitleChange}
                                     placeholder="e.g. Enterprise Services"
-                                    className="w-full bg-gray-50 border-2 border-transparent text-gray-900 rounded-xl px-4 py-3 outline-none focus:border-cyan-500/30 focus:bg-white focus:ring-4 focus:ring-cyan-500/10 transition-all font-medium"
+                                    className="w-full bg-gray-50 border-2 border-transparent text-gray-900 rounded-xl px-4 py-3 outline-none focus:border-primary-400 focus:bg-white focus:ring-4 focus:ring-primary-500/20 shadow-sm focus:shadow-md transition-all font-medium"
                                 />
                             </div>
 
                             <div>
                                 <label className="block text-sm font-bold text-gray-700 mb-2">URL Slug <span className="text-red-500">*</span></label>
-                                <div className="flex bg-gray-50 rounded-xl border-2 border-transparent focus-within:border-cyan-500/30 focus-within:bg-white focus-within:ring-4 focus-within:ring-cyan-500/10 transition-all">
+                                <div className="flex bg-gray-50 rounded-xl border-2 border-transparent focus-within:border-primary-400 focus-within:bg-white focus-within:ring-4 focus-within:ring-primary-500/20 shadow-sm focus-within:shadow-md transition-all">
                                     <span className="flex items-center pl-4 text-gray-400 font-bold text-sm select-none">/</span>
                                     <input
                                         type="text"
@@ -106,14 +106,14 @@ export default function NewCMSPage() {
                                     rows={3}
                                     value={formData.metaDesc}
                                     onChange={e => setFormData({ ...formData, metaDesc: e.target.value })}
-                                    className="w-full bg-gray-50 border-2 border-transparent text-gray-900 rounded-xl px-4 py-3 outline-none focus:border-cyan-500/30 focus:bg-white focus:ring-4 focus:ring-cyan-500/10 transition-all font-medium text-sm resize-y"
+                                    className="w-full bg-gray-50 border-2 border-transparent text-gray-900 rounded-xl px-4 py-3 outline-none focus:border-primary-400 focus:bg-white focus:ring-4 focus:ring-primary-500/20 shadow-sm focus:shadow-md transition-all font-medium text-sm resize-y"
                                 />
                             </div>
                         </div>
                     </div>
 
                     {/* Submit Bar */}
-                    <div className="bg-white border border-gray-100 rounded-3xl p-6 shadow-sm flex items-center justify-between">
+                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-6 shadow-[0_4px_20px_rgb(0,0,0,0.03)] flex items-center justify-between">
                         <label className="flex items-center gap-3 cursor-pointer group">
                             <div className="relative">
                                 <input

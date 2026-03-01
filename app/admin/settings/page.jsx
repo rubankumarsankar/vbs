@@ -103,12 +103,12 @@ export default function AdminSettingsPage() {
         return <div className="p-10 text-gray-400 font-bold animate-pulse text-center">Loading Configuration...</div>
     }
 
-    const inputClass = "w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:bg-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 text-sm font-medium text-gray-900 transition-all"
+    const inputClass = "w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:bg-white focus:border-primary-400 focus:ring-4 focus:ring-primary-500/20 shadow-sm focus:shadow-md text-sm font-medium text-gray-900 transition-all"
 
     return (
         <div className="w-full">
             <div className="max-w-4xl mx-auto px-6 py-10 animate-fade-up">
-                <div className="mb-10 flex items-center justify-between bg-white border border-gray-100 rounded-3xl p-8 shadow-sm relative overflow-hidden">
+                <div className="mb-10 flex items-center justify-between text-gray-900 bg-white border border-gray-100 rounded-3xl p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)] relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-primary-50/50 rounded-bl-full -z-10" />
                     <div>
                         <h1 className="text-2xl font-extrabold text-gray-900 tracking-tight">Global Configurations</h1>
@@ -127,7 +127,7 @@ export default function AdminSettingsPage() {
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                     {/* Identity Block */}
-                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-sm transition-all hover:shadow-md hover:border-primary-100">
+                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)] transition-all hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] hover:border-primary-200 hover:-translate-y-1">
                         <div className="mb-6 pb-4 border-b border-gray-50 flex items-center gap-3">
                             <span className="w-8 h-8 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center font-bold text-sm">1</span>
                             <h2 className="text-lg font-extrabold tracking-tight">Brand Identity</h2>
@@ -161,7 +161,7 @@ export default function AdminSettingsPage() {
                     </div>
 
                     {/* Navbar Links Block */}
-                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-sm transition-all hover:shadow-md hover:border-primary-100">
+                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)] transition-all hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] hover:border-primary-200 hover:-translate-y-1">
                         <div className="mb-6 pb-4 border-b border-gray-50 flex items-center justify-between">
                             <div className="flex items-center gap-3">
                                 <span className="w-8 h-8 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center font-bold text-sm">2</span>
@@ -185,14 +185,14 @@ export default function AdminSettingsPage() {
                                         placeholder="Label"
                                         value={link.label}
                                         onChange={e => updateNavLink(idx, 'label', e.target.value)}
-                                        className="flex-1 bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-500/10 transition-all min-w-0"
+                                        className="flex-1 bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-primary-400 focus:ring-4 focus:ring-primary-500/20 shadow-sm focus:shadow-md transition-all min-w-0"
                                     />
                                     <input
                                         type="text"
                                         placeholder="/url-path"
                                         value={link.url}
                                         onChange={e => updateNavLink(idx, 'url', e.target.value)}
-                                        className="flex-1 bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-medium font-mono text-gray-600 outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-500/10 transition-all min-w-0"
+                                        className="flex-1 bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-medium font-mono text-gray-600 outline-none focus:border-primary-400 focus:ring-4 focus:ring-primary-500/20 shadow-sm focus:shadow-md transition-all min-w-0"
                                     />
                                     <button type="button" onClick={() => removeNavLink(idx)} className="w-8 h-8 rounded-lg flex items-center justify-center text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors shrink-0 text-sm font-bold">
                                         ×
@@ -206,7 +206,7 @@ export default function AdminSettingsPage() {
                     </div>
 
                     {/* Footer Block */}
-                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-sm transition-all hover:shadow-md hover:border-primary-100">
+                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)] transition-all hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] hover:border-primary-200 hover:-translate-y-1">
                         <div className="mb-6 pb-4 border-b border-gray-50 flex items-center gap-3">
                             <span className="w-8 h-8 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center font-bold text-sm">3</span>
                             <h2 className="text-lg font-extrabold tracking-tight">Footer Injection</h2>
@@ -231,7 +231,7 @@ export default function AdminSettingsPage() {
                     </div>
 
                     {/* SEO Block */}
-                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-sm transition-all hover:shadow-md hover:border-primary-100">
+                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)] transition-all hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] hover:border-primary-200 hover:-translate-y-1">
                         <div className="mb-6 pb-4 border-b border-gray-50 flex items-center gap-3">
                             <span className="w-8 h-8 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center font-bold text-sm">4</span>
                             <h2 className="text-lg font-extrabold tracking-tight">Default Search Engine Config</h2>

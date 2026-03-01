@@ -22,7 +22,7 @@ export function AboutHero({ data }) {
                 <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
             </div>
 
-            <div className="relative z-10 max-w-5xl mx-auto px-6 pt-32 pb-28 text-center">
+            <div className="relative z-10 max-w-5xl mx-auto px-6 pt-40 pb-36 text-center">
                 <Reveal>
                     <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 border border-white/10 text-primary-300 text-sm font-bold tracking-wider uppercase mb-8 backdrop-blur-sm">
                         <span className="w-1.5 h-1.5 bg-accent-400 rounded-full" /> {data.tag || 'About Us'}
@@ -72,7 +72,7 @@ export function AboutIntro({ data }) {
                 <div className="grid md:grid-cols-2 gap-8">
                     {/* Mission */}
                     <Reveal delay={0.1}>
-                        <div className="bg-white rounded-xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
+                        <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-8 border border-gray-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] transition-all duration-500 hover:-translate-y-1.5">
                             <div className="w-12 h-12 rounded-xl bg-primary-50 border border-primary-100 flex items-center justify-center mb-5">
                                 <HiOutlineStar className="text-2xl text-primary-600" />
                             </div>
@@ -83,7 +83,7 @@ export function AboutIntro({ data }) {
 
                     {/* Vision */}
                     <Reveal delay={0.2}>
-                        <div className="bg-white rounded-xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
+                        <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-8 border border-gray-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] transition-all duration-500 hover:-translate-y-1.5">
                             <div className="w-12 h-12 rounded-xl bg-accent-50 border border-accent-100 flex items-center justify-center mb-5">
                                 <HiOutlineEye className="text-2xl text-accent-600" />
                             </div>
@@ -119,7 +119,7 @@ export function AboutAudience({ data }) {
                         const Icon = ICON_MAP[card.icon] || HiOutlineUserGroup
                         return (
                             <Reveal key={i} delay={0.1 + i * 0.08}>
-                                <div className="bg-gray-50 rounded-xl p-7 border border-gray-100 hover:border-primary-200 hover:shadow-md transition-all hover:-translate-y-1 h-full">
+                                <div className="bg-[#EDF4FF] rounded-2xl p-7 border border-gray-100 hover:border-primary-300 shadow-[0_4px_20px_rgb(0,0,0,0.02)] hover:shadow-[0_10px_40px_rgba(72,115,174,0.06)] transition-all duration-500 hover:-translate-y-1.5 h-full">
                                     <div className="w-12 h-12 rounded-xl bg-primary-500 text-white flex items-center justify-center mb-5">
                                         <Icon className="text-2xl" />
                                     </div>
@@ -169,7 +169,7 @@ export function AboutApproach({ data }) {
                 <div className="grid md:grid-cols-3 gap-6 mb-14">
                     {data.cards?.map((card, i) => (
                         <Reveal key={i} delay={0.15 + i * 0.08}>
-                            <div className="bg-white rounded-xl p-7 border border-gray-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 h-full">
+                            <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-7 border border-gray-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] transition-all duration-500 hover:-translate-y-1.5 h-full">
                                 <div className="text-sm font-bold text-primary-600 uppercase tracking-wider mb-3">Step {i + 1}</div>
                                 <p className="text-gray-700 leading-relaxed">{card.text}</p>
                             </div>

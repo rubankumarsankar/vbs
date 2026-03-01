@@ -75,7 +75,7 @@ export default function AdminMediaLibrary() {
     return (
         <div className="w-full">
             <div className="max-w-6xl mx-auto px-6 py-10 animate-fade-up">
-                <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between bg-white border border-gray-100 rounded-2xl p-6 shadow-sm gap-4">
+                <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between text-gray-900 bg-white border border-gray-100 rounded-3xl p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)] gap-4">
                     <div>
                         <h1 className="text-2xl font-extrabold text-gray-900 tracking-tight">Global Media Library</h1>
                         <p className="text-gray-500 font-medium text-sm mt-2">
@@ -103,7 +103,7 @@ export default function AdminMediaLibrary() {
                 ) : (
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {media.length > 0 ? media.map(item => (
-                            <div key={item.id} className="group bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:border-primary-300 transition-colors flex flex-col">
+                            <div key={item.id} className="group bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-300 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] transition-all hover:-translate-y-1 flex flex-col">
                                 <div className="h-40 bg-gray-50 flex items-center justify-center overflow-hidden border-b border-gray-50 relative">
                                     <img src={item.url} alt={item.filename} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                                     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">

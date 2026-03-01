@@ -29,7 +29,7 @@ export default function Footer({ settings }) {
     const socialLinks = settings?.socialLinks || {}
 
     return (
-        <footer className="bg-secondary-600 text-white pt-20 pb-10 relative overflow-hidden">
+        <footer className="bg-secondary-600 text-white pt-24 pb-12 relative overflow-hidden mt-16 rounded-t-[2.5rem] lg:rounded-t-[4rem] border-t border-white/5 shadow-[0_-20px_60px_rgba(0,0,0,0.05)]">
             {/* Ambient teal glows */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none"></div>
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary-500/3 rounded-full blur-[100px] pointer-events-none"></div>

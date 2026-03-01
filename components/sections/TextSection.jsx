@@ -39,7 +39,7 @@ export default function TextSection({ data }) {
                     {/* Right: Checklist */}
                     <Reveal delay={0.2} xOffset={30} className="relative h-full flex flex-col justify-center">
                         {data.checklist && data.checklist.length > 0 ? (
-                            <div className="relative bg-white/80 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(99,102,241,0.08)] transition-shadow duration-500 overflow-hidden">
+                            <div className="relative bg-white/80 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-gray-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] hover:-translate-y-1.5 transition-all duration-500 overflow-hidden">
                                 {/* Corner accent */}
                                 <div className="absolute top-0 right-0 w-40 h-40 bg-linear-to-bl from-primary-100 to-transparent rounded-bl-full -z-10 blur-xl" />
                                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-linear-to-tr from-blue-100 to-transparent rounded-tr-full -z-10 blur-xl" />
@@ -60,7 +60,7 @@ export default function TextSection({ data }) {
 
                                         return (
                                             <Child key={idx}>
-                                                <div className="flex items-start gap-4 group p-3 rounded-2xl hover:bg-slate-50 transition-colors duration-300">
+                                                <div className="flex items-start gap-4 group p-3 rounded-2xl hover:bg-[#EDF4FF] transition-colors duration-300">
                                                     <div className="flex items-center justify-center w-8 h-8 rounded-full bg-white border border-gray-200 text-primary-500 group-hover:bg-primary-50 group-hover:border-primary-200 group-hover:text-primary-600 group-hover:scale-110 transition-all duration-300 shrink-0 mt-0.5 shadow-sm">
                                                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
                                                     </div>
@@ -81,7 +81,7 @@ export default function TextSection({ data }) {
                                 </StaggerChildren>
                             </div>
                         ) : (
-                            <div className="bg-white/80 backdrop-blur-md p-10 rounded-3xl border border-gray-100 h-full min-h-[300px] flex items-center justify-center relative overflow-hidden group hover:border-primary-200 transition-colors duration-500 shadow-sm">
+                            <div className="bg-white/80 backdrop-blur-md p-10 rounded-3xl border border-gray-100 h-full min-h-[300px] flex items-center justify-center relative overflow-hidden group shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] transition-all duration-500 hover:-translate-y-1.5">
                                 <div className="absolute inset-0 bg-linear-to-br from-primary-50/50 to-blue-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                 <span className="text-primary-600 font-medium flex items-center gap-2 relative z-10">
                                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>

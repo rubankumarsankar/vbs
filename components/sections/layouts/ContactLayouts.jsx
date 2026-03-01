@@ -15,7 +15,7 @@ export function ContactHero({ data }) {
                 <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
             </div>
 
-            <div className="relative z-10 max-w-4xl mx-auto px-6 pt-32 pb-28 text-center">
+            <div className="relative z-10 max-w-4xl mx-auto px-6 pt-40 pb-36 text-center">
                 <Reveal>
                     <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 border border-white/10 text-primary-300 text-sm font-bold tracking-wider uppercase mb-8 backdrop-blur-sm">
                         <span className="w-1.5 h-1.5 bg-accent-400 rounded-full" /> {data.tag || 'Contact'}
@@ -57,7 +57,7 @@ export function ContactFormSection({ data }) {
                         </Reveal>
 
                         <Reveal delay={0.1}>
-                            <div className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm">
+                            <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-6 border border-gray-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] transition-all duration-500 hover:-translate-y-1">
                                 <div className="flex items-center gap-4">
                                     <div className="w-12 h-12 rounded-xl bg-primary-50 border border-primary-100 flex items-center justify-center shrink-0">
                                         <HiOutlineMail className="text-xl text-primary-600" />
@@ -76,7 +76,7 @@ export function ContactFormSection({ data }) {
                     {/* Right — Form */}
                     <div className="lg:col-span-3">
                         <Reveal delay={0.15}>
-                            <div className="bg-white rounded-2xl p-8 md:p-10 border border-gray-100 shadow-lg shadow-gray-200/50">
+                            <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-8 md:p-10 border border-gray-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] transition-all duration-500 hover:-translate-y-1.5">
                                 <ContactForm />
                             </div>
                         </Reveal>

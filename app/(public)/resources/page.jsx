@@ -62,7 +62,7 @@ export default async function ResourcesPage() {
                                     href={link.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group relative bg-white backdrop-blur-lg border border-gray-100 rounded-3xl p-8 hover:bg-slate-50 transition-all duration-500 block overflow-hidden isolate shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(99,102,241,0.08)] hover:-translate-y-2 ring-1 ring-amber-500/30"
+                                    className="group relative bg-white backdrop-blur-lg border border-gray-100 rounded-3xl p-8 hover:bg-[#EDF4FF] transition-all duration-500 block overflow-hidden isolate shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(99,102,241,0.08)] hover:-translate-y-2 ring-1 ring-amber-500/30"
                                 >
                                     {/* Glassmorphism Shine Effect */}
                                     <div className="absolute inset-0 bg-linear-to-tr from-white/0 via-primary-50/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
@@ -74,7 +74,7 @@ export default async function ResourcesPage() {
                                         <span className="text-[11px] font-bold text-primary-700 bg-primary-50 px-3 py-1.5 rounded-full border border-primary-100 backdrop-blur-sm shadow-sm">
                                             {link.platform}
                                         </span>
-                                        <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-primary-50 group-hover:rotate-12 transition-all duration-300 border border-gray-200">
+                                        <div className="w-8 h-8 rounded-full bg-[#EDF4FF] flex items-center justify-center group-hover:bg-primary-50 group-hover:rotate-12 transition-all duration-300 border border-gray-200">
                                             <HiOutlineExternalLink className="text-gray-400 group-hover:text-primary-600 transition-colors" />
                                         </div>
                                     </div>
@@ -86,7 +86,7 @@ export default async function ResourcesPage() {
                                     )}
 
                                     <div className="flex items-center gap-3 text-[10px] font-bold text-gray-500 uppercase tracking-wider relative z-10 mt-auto">
-                                        <span className="bg-slate-50 px-2.5 py-1.5 rounded-md border border-gray-200">{link.category}</span>
+                                        <span className="bg-[#EDF4FF] px-2.5 py-1.5 rounded-md border border-gray-200">{link.category}</span>
                                     </div>
                                 </a>
                             ))}
@@ -107,9 +107,9 @@ export default async function ResourcesPage() {
                                     href={link.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group bg-white backdrop-blur-sm border border-gray-100 shadow-sm rounded-2xl p-5 hover:bg-slate-50 transition-all duration-300 flex items-center gap-6 hover:border-primary-200 hover:shadow-[0_4px_15px_rgba(99,102,241,0.05)]"
+                                    className="group bg-white backdrop-blur-sm border border-gray-100 shadow-sm rounded-2xl p-5 hover:bg-[#EDF4FF] transition-all duration-300 flex items-center gap-6 hover:border-primary-200 hover:shadow-[0_4px_15px_rgba(99,102,241,0.05)]"
                                 >
-                                    <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center border border-gray-100 shrink-0 group-hover:bg-primary-50 group-hover:border-primary-200 group-hover:scale-110 transition-all duration-300">
+                                    <div className="w-14 h-14 rounded-2xl bg-[#EDF4FF] flex items-center justify-center border border-gray-100 shrink-0 group-hover:bg-primary-50 group-hover:border-primary-200 group-hover:scale-110 transition-all duration-300">
                                         <HiOutlineExternalLink className="text-gray-400 group-hover:text-primary-600 text-xl transition-colors" />
                                     </div>
                                     <div className="flex-1 min-w-0">
@@ -119,7 +119,7 @@ export default async function ResourcesPage() {
                                         )}
                                         <div className="flex items-center gap-2 mt-3">
                                             <span className="text-[10px] font-bold text-primary-700 bg-primary-50 px-2 py-1 rounded-md border border-primary-200">{link.platform}</span>
-                                            <span className="text-[10px] font-bold text-gray-500 bg-slate-50 px-2 py-1 rounded-md border border-gray-200">{link.category}</span>
+                                            <span className="text-[10px] font-bold text-gray-500 bg-[#EDF4FF] px-2 py-1 rounded-md border border-gray-200">{link.category}</span>
                                         </div>
                                     </div>
                                 </a>
@@ -130,7 +130,7 @@ export default async function ResourcesPage() {
 
                 {links.length === 0 && (
                     <div className="text-center py-32 bg-white border border-gray-100 shadow-sm rounded-3xl backdrop-blur-sm mt-12">
-                        <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-gray-200">
+                        <div className="w-16 h-16 bg-[#EDF4FF] rounded-full flex items-center justify-center mx-auto mb-4 border border-gray-200">
                             <HiOutlineStar className="text-gray-400 text-2xl" />
                         </div>
                         <p className="text-gray-800 text-lg font-medium">Resources coming soon.</p>

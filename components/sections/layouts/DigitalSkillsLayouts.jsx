@@ -15,7 +15,7 @@ export function DSHero({ data }) {
                 <div className="absolute top-0 right-0 w-72 h-72 bg-primary-500/8 rounded-full blur-[100px]" />
             </div>
             <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
-            <div className="relative z-10 max-w-4xl mx-auto px-6 py-24 md:py-32 text-center">
+            <div className="relative z-10 max-w-4xl mx-auto px-6 pt-40 pb-32 md:pt-48 md:pb-40 text-center">
                 <p className="text-primary-400 text-xs font-bold uppercase tracking-[0.2em] mb-4">{data.tag || 'Virginia Business Solutions'}</p>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6">
                     <span className="text-white">{data.heading?.split('|')[0] || 'Choosing the Right Digital'}</span><br />
@@ -69,7 +69,7 @@ export function DSSkillClusters({ data }) {
                         const color = cluster.color || 'from-primary-500 to-primary-700'
                         const shadow = cluster.shadow || 'shadow-primary-500/20'
                         return (
-                            <div key={i} className="group bg-white border border-gray-100 hover:border-primary-200 rounded-2xl p-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300 relative overflow-hidden flex flex-col h-full">
+                            <div key={i} className="group bg-white/80 backdrop-blur-xl border border-gray-100 rounded-3xl p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] hover:-translate-y-1.5 transition-all duration-500 relative overflow-hidden flex flex-col h-full">
                                 <div className={`w-14 h-14 rounded-2xl bg-linear-to-br ${color} flex items-center justify-center mb-6 shadow-lg ${shadow} group-hover:scale-110 transition-transform`}>
                                     <Icon className="text-white text-2xl" />
                                 </div>
@@ -110,7 +110,7 @@ export function DSEvaluation({ data }) {
                     {data.cards?.map((item, i) => {
                         const Icon = iconMap[item.icon] || HiOutlineBadgeCheck
                         return (
-                            <div key={i} className="bg-white border border-gray-100 shadow-sm rounded-2xl p-6 md:p-8 flex gap-6 items-start hover:border-primary-200 transition-all group">
+                            <div key={i} className="bg-white/80 backdrop-blur-xl border border-gray-100 rounded-2xl p-6 md:p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)] flex gap-6 items-start hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] hover:-translate-y-1 transition-all duration-500 group">
                                 <div className="w-12 h-12 rounded-xl bg-primary-50 border border-primary-100 flex items-center justify-center shrink-0 group-hover:scale-110 transition-all">
                                     <Icon className="text-primary-600 text-xl" />
                                 </div>
@@ -150,7 +150,7 @@ export function DSAIImpact({ data }) {
 
                     <div className="space-y-4 mt-2">
                         {data.cards?.map((item, i) => (
-                            <div key={i} className="bg-white border border-gray-100 rounded-2xl p-6 hover:border-primary-200 shadow-sm transition-all group">
+                            <div key={i} className="bg-white/80 backdrop-blur-xl border border-gray-100 rounded-2xl p-6 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] hover:-translate-y-1 transition-all duration-500 group">
                                 <p className="text-xs font-bold text-accent-500 uppercase tracking-widest mb-2 group-hover:text-accent-600 transition-colors">In {item.title}</p>
                                 <p className="text-gray-700 font-medium leading-relaxed">{item.description}</p>
                             </div>
@@ -217,7 +217,7 @@ export function DSWhereNext({ data }) {
                         const iconBg = isEven ? 'from-primary-500 to-primary-700 shadow-primary-500/20' : 'from-primary-400 to-primary-600 shadow-primary-400/20'
 
                         return (
-                            <Link key={i} href={card.url || '#'} className="group bg-white border border-gray-100 hover:border-primary-200 rounded-2xl p-10 block transition-all duration-300 hover:-translate-y-2 hover:shadow-lg relative overflow-hidden">
+                            <Link key={i} href={card.url || '#'} className="group bg-white/80 backdrop-blur-xl border border-gray-100 rounded-3xl p-10 block shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
                                 <div className={`w-16 h-16 rounded-2xl bg-linear-to-br ${iconBg} flex items-center justify-center mb-6 mx-auto shadow-lg group-hover:scale-110 transition-transform relative z-10`}>
                                     <Icon className="text-white text-3xl" />
                                 </div>

@@ -63,7 +63,7 @@ export default async function AdminDashboard() {
                     {stats.map(stat => {
                         const Icon = stat.icon
                         return (
-                            <div key={stat.label} className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow group">
+                            <div key={stat.label} className="bg-white border border-gray-100 rounded-3xl p-5 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] hover:-translate-y-1 transition-all duration-300 group">
                                 <div className={`w-10 h-10 rounded-xl bg-linear-to-br ${stat.color} flex items-center justify-center mb-3 shadow-lg ${stat.shadow} group-hover:scale-110 transition-transform`}>
                                     <Icon className="text-white text-lg" />
                                 </div>
@@ -85,7 +85,7 @@ export default async function AdminDashboard() {
                                     key={action.href}
                                     href={action.href}
                                     target={action.target || '_self'}
-                                    className="bg-white border border-gray-100 rounded-2xl p-5 block group hover:border-primary-200 hover:shadow-md transition-all"
+                                    className="bg-white border border-gray-100 rounded-3xl p-5 block shadow-[0_4px_20px_rgb(0,0,0,0.03)] group hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] hover:-translate-y-1 transition-all duration-300"
                                 >
                                     <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center mb-3 group-hover:bg-primary-50 group-hover:scale-110 transition-all">
                                         <Icon className="text-gray-400 text-lg group-hover:text-primary-600 transition-colors" />
@@ -102,7 +102,7 @@ export default async function AdminDashboard() {
                 </div>
 
                 {/* Recent Enquiries */}
-                <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm">
+                <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)]">
                     <div className="flex items-center justify-between mb-6">
                         <h2 className="text-lg font-extrabold text-gray-900 tracking-tight flex items-center gap-2">
                             <HiOutlineMail className="text-xl text-primary-500" />
@@ -116,7 +116,7 @@ export default async function AdminDashboard() {
                     ) : (
                         <div className="space-y-3">
                             {recentContacts.map(c => (
-                                <div key={c.id} className="flex items-start gap-4 bg-gray-50/50 rounded-xl p-4 border border-gray-100 hover:border-primary-100 transition-colors">
+                                <div key={c.id} className="flex items-start gap-4 bg-white hover:bg-gray-50/80 rounded-2xl p-4 border border-gray-100 hover:border-primary-100 shadow-sm transition-all">
                                     <div className="w-9 h-9 rounded-lg bg-linear-to-b from-primary-100 to-primary-50 flex items-center justify-center text-primary-600 text-xs font-black uppercase shrink-0">
                                         {c.name?.[0] || '?'}
                                     </div>

@@ -23,7 +23,7 @@ export function CoursesHero({ data }) {
             </div>
             <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
-            <div className="relative z-10 max-w-4xl mx-auto px-6 py-24 md:py-32 text-center">
+            <div className="relative z-10 max-w-4xl mx-auto px-6 pt-40 pb-32 md:pt-48 md:pb-40 text-center">
                 <p className="text-primary-400 text-xs font-bold uppercase tracking-[0.2em] mb-4">{data.tag || 'Virginia Business Solutions'}</p>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6">
                     <span className="text-white">{data.heading?.split('|')[0] || 'Structured Learning Paths'}</span><br />
@@ -71,7 +71,7 @@ export function CoursesStructure({ data }) {
                     <div className="md:w-1/3 pt-2">
                         <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight leading-snug">{data.heading}</h2>
                     </div>
-                    <div className="md:w-2/3 space-y-4 text-gray-600 font-medium leading-relaxed bg-white border border-gray-100 p-8 md:p-10 rounded-2xl shadow-sm" dangerouslySetInnerHTML={{ __html: data.body }} />
+                    <div className="md:w-2/3 space-y-4 text-gray-600 font-medium leading-relaxed bg-white/80 backdrop-blur-xl border border-gray-100 p-8 md:p-10 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.03)]" dangerouslySetInnerHTML={{ __html: data.body }} />
                 </div>
             </div>
         </section>
@@ -96,7 +96,7 @@ export function CoursesProgression({ data }) {
                         const shadow = stage.shadow || 'shadow-primary-500/20'
 
                         return (
-                            <div key={i} className="group bg-white border border-gray-100 rounded-2xl p-8 hover:border-primary-200 hover:shadow-md hover:-translate-y-2 transition-all duration-300 relative overflow-hidden flex flex-col h-full">
+                            <div key={i} className="group bg-white/80 backdrop-blur-xl border border-gray-100 rounded-3xl p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] hover:-translate-y-1.5 transition-all duration-500 relative overflow-hidden flex flex-col h-full">
                                 <div className="flex items-center gap-4 mb-6 relative z-10">
                                     <div className={`w-14 h-14 rounded-2xl bg-linear-to-br ${color} flex items-center justify-center shadow-lg ${shadow} shrink-0 group-hover:scale-110 transition-transform`}>
                                         <Icon className="text-white text-2xl" />
@@ -125,7 +125,7 @@ export function CoursesProgression({ data }) {
                                         </ul>
                                     </div>
 
-                                    <div className="bg-gray-50 rounded-xl p-5 border border-gray-100">
+                                    <div className="bg-[#EDF4FF] rounded-xl p-5 border border-gray-100">
                                         <h4 className="text-xs font-bold uppercase tracking-wider text-gray-700 mb-3 flex items-center gap-2">
                                             <HiOutlineAcademicCap className="text-primary-500 text-lg" /> Recommended Approach:
                                         </h4>
@@ -167,7 +167,7 @@ export function CoursesFreePaid({ data }) {
                             ))}
                         </ul>
                     </div>
-                    <div className="bg-white border border-gray-100 hover:border-primary-200 transition-colors rounded-2xl p-10 text-center flex flex-col justify-center shadow-sm relative overflow-hidden group">
+                    <div className="bg-white/80 backdrop-blur-xl border border-gray-100 rounded-3xl p-10 text-center flex flex-col justify-center shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] transition-all duration-500 hover:-translate-y-1.5 relative overflow-hidden group">
                         <div className="absolute inset-0 bg-linear-to-b from-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                         <span className="text-6xl mb-6 block drop-shadow-lg relative z-10">💡</span>
                         <p className="text-2xl text-gray-900 font-bold leading-relaxed mb-4 relative z-10">
@@ -196,7 +196,7 @@ export function CoursesEvalAndMistakes({ data }) {
 
                         <div className="space-y-4">
                             {data.leftList?.map((item, i) => (
-                                <div key={i} className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm flex items-start gap-4 hover:border-primary-200 transition-colors">
+                                <div key={i} className="bg-white/80 backdrop-blur-xl border border-gray-100 rounded-2xl p-5 shadow-[0_4px_20px_rgb(0,0,0,0.03)] flex items-start gap-4 hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] transition-all duration-500 hover:-translate-y-1">
                                     <div className="w-8 h-8 rounded-full bg-primary-50 border border-primary-100 flex items-center justify-center shrink-0 text-primary-600 font-bold text-xs mt-0.5">
                                         {i + 1}
                                     </div>
@@ -219,7 +219,7 @@ export function CoursesEvalAndMistakes({ data }) {
                             {data.rightCards?.map((mistake, i) => {
                                 const Icon = iconMap[mistake.icon] || HiOutlineBadgeCheck
                                 return (
-                                    <div key={i} className="group bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:border-primary-200 transition-all flex items-center gap-5">
+                                    <div key={i} className="group bg-white/80 backdrop-blur-xl border border-gray-100 rounded-2xl p-5 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] transition-all duration-500 hover:-translate-y-1 flex items-center gap-5">
                                         <div className="w-12 h-12 rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center shrink-0 group-hover:bg-primary-50 group-hover:border-primary-100 transition-colors">
                                             <Icon className="text-gray-500 group-hover:text-rose-500 text-2xl transition-colors" />
                                         </div>

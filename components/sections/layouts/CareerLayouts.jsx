@@ -25,7 +25,7 @@ export function CareerHero({ data }) {
             </div>
             <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
-            <div className="relative z-10 max-w-4xl mx-auto px-6 py-24 md:py-32 text-center">
+            <div className="relative z-10 max-w-4xl mx-auto px-6 pt-40 pb-32 md:pt-48 md:pb-40 text-center">
                 <p className="text-primary-400 text-xs font-bold uppercase tracking-[0.2em] mb-4">{data.tag || 'Virginia Business Solutions'}</p>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6">
                     <span className="text-white">{data.heading?.split('|')[0] || 'Understand Where Digital Skills'}</span><br />
@@ -74,7 +74,7 @@ export function CareerWhyClarity({ data }) {
             <div className="max-w-5xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     {/* Clarity Matters */}
-                    <div className="bg-white border border-gray-100 p-10 rounded-2xl shadow-sm hover:border-primary-200 transition-colors group">
+                    <div className="group bg-white/80 backdrop-blur-xl border border-gray-100 p-10 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] hover:-translate-y-1.5 transition-all duration-500">
                         <div className="w-14 h-14 rounded-2xl bg-primary-50 border border-primary-100 text-primary-600 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
                             <HiOutlineLightBulb className="text-3xl" />
                         </div>
@@ -117,7 +117,7 @@ export function CareerProgression({ data }) {
                         const shadow = stage.shadow || 'shadow-primary-500/20'
 
                         return (
-                            <div key={i} className="group bg-white border border-gray-100 rounded-2xl p-8 hover:border-primary-200 hover:shadow-md hover:-translate-y-2 transition-all duration-300 flex flex-col h-full relative overflow-hidden">
+                            <div key={i} className="group bg-white/80 backdrop-blur-xl border border-gray-100 rounded-3xl p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] hover:-translate-y-1.5 transition-all duration-500 flex flex-col h-full relative overflow-hidden">
                                 <div className="flex items-center gap-4 mb-8 relative z-10">
                                     <div className={`w-14 h-14 rounded-2xl bg-linear-to-br ${color} flex items-center justify-center shadow-lg ${shadow} shrink-0 group-hover:scale-110 transition-transform`}>
                                         <Icon className="text-white text-2xl" />
@@ -132,7 +132,7 @@ export function CareerProgression({ data }) {
                                     {stage.description}
                                 </p>
 
-                                <div className="bg-gray-50 rounded-xl p-6 border border-gray-100 mb-6 grow">
+                                <div className="bg-[#EDF4FF] rounded-xl p-6 border border-gray-100 mb-6 grow">
                                     <ul className="space-y-4">
                                         {stage.bullets?.map((item, j) => (
                                             <li key={j} className="text-sm text-gray-700 font-medium flex gap-3 items-start">
@@ -170,7 +170,7 @@ export function CareerGrowth({ data }) {
 
                         <div className="space-y-4 text-gray-600 font-medium leading-relaxed text-lg mb-10" dangerouslySetInnerHTML={{ __html: data.body }} />
 
-                        <div className="bg-white border border-gray-100 shadow-sm rounded-2xl p-8 space-y-5">
+                        <div className="bg-white/80 backdrop-blur-xl border border-gray-100 rounded-3xl p-8 space-y-5 shadow-[0_4px_20px_rgb(0,0,0,0.03)]">
                             {data.checklist?.map((item, i) => (
                                 <div key={i} className="flex items-center gap-5">
                                     <div className="w-10 h-10 rounded-xl bg-primary-50 border border-primary-100 flex items-center justify-center text-primary-600 font-bold text-base">{i + 1}</div>
@@ -186,7 +186,7 @@ export function CareerGrowth({ data }) {
                             {data.cards?.map((factor, i) => {
                                 const Icon = iconMap[factor.icon] || HiOutlineViewGridAdd
                                 return (
-                                    <div key={i} className="bg-white border border-gray-100 hover:border-primary-200 transition-all rounded-xl p-5 flex items-center gap-4 shadow-sm group">
+                                    <div key={i} className="group bg-white/80 backdrop-blur-xl border border-gray-100 rounded-2xl p-5 flex items-center gap-4 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] hover:-translate-y-1 transition-all duration-500">
                                         <div className="w-10 h-10 rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center group-hover:bg-primary-50 group-hover:border-primary-100 transition-colors">
                                             <Icon className="text-gray-600 group-hover:text-primary-600 text-xl transition-colors" />
                                         </div>
@@ -223,7 +223,7 @@ export function CareerAIAndMistakes({ data }) {
 
                         <div className="space-y-6 text-gray-600 font-medium leading-relaxed mb-10 text-lg" dangerouslySetInnerHTML={{ __html: data.leftBody }} />
 
-                        <div className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:border-primary-200 transition-colors">
+                        <div className="bg-white/80 backdrop-blur-xl border border-gray-100 rounded-3xl p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] transition-all duration-500 hover:-translate-y-1.5">
                             <p className="text-gray-900 font-bold mb-6 text-xl">{data.leftListTitle}</p>
                             <ul className="space-y-4 mb-6">
                                 {data.leftList?.map((item, i) => {
@@ -254,7 +254,7 @@ export function CareerAIAndMistakes({ data }) {
 
                         <div className="space-y-4 mb-10">
                             {data.rightCards?.map((mistake, i) => (
-                                <div key={i} className="flex items-start gap-5 bg-white border border-gray-100 rounded-xl p-5 hover:border-primary-200 transition-colors shadow-sm group">
+                                <div key={i} className="group flex items-start gap-5 bg-white/80 backdrop-blur-xl border border-gray-100 rounded-2xl p-5 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] hover:-translate-y-1 transition-all duration-500">
                                     <div className="w-10 h-10 rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center shrink-0 group-hover:bg-primary-50 group-hover:border-primary-100 transition-colors">
                                         <HiOutlineExclamationCircle className="text-gray-500 group-hover:text-rose-500 text-xl transition-colors" />
                                     </div>
@@ -279,7 +279,7 @@ export function CareerAligning({ data }) {
             <div className="max-w-5xl mx-auto">
                 <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight mb-12">{data.heading}</h2>
 
-                <div className="bg-white rounded-2xl p-10 md:p-16 shadow-sm relative overflow-hidden border border-gray-100">
+                <div className="bg-white/80 backdrop-blur-xl border border-gray-100 rounded-3xl p-10 md:p-16 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] transition-all duration-500 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/5 rounded-full blur-[100px] pointer-events-none" />
                     <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-400/5 rounded-full blur-[100px] pointer-events-none" />
 

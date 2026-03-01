@@ -29,7 +29,7 @@ export default function AdminSidebar() {
     const { data: session } = useSession()
 
     return (
-        <aside className="w-72 min-h-screen bg-linear-to-b from-secondary-600 to-[#162030] border-r border-white/5 flex flex-col select-none">
+        <aside className="w-72 min-h-screen bg-white border-r border-gray-100 flex flex-col select-none">
             {/* Brand */}
             <div className="p-6 pb-2">
                 <Link href="/admin/dashboard" className="flex items-center gap-3 group">
@@ -37,7 +37,7 @@ export default function AdminSidebar() {
                         <span className="text-white font-black text-lg">V</span>
                     </div>
                     <div>
-                        <h1 className="text-white font-extrabold text-base tracking-tight">VPS Admin</h1>
+                        <h1 className="text-gray-900 font-extrabold text-base tracking-tight">VPS Admin</h1>
                         <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Control Panel</p>
                     </div>
                 </Link>
@@ -45,13 +45,13 @@ export default function AdminSidebar() {
 
             {/* User Badge */}
             {session?.user && (
-                <div className="mx-4 mt-4 mb-2 px-4 py-3 bg-white/5 rounded-xl border border-white/8">
+                <div className="mx-4 mt-4 mb-2 px-4 py-3 bg-gray-50 rounded-xl border border-gray-100">
                     <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-lg bg-linear-to-b from-primary-500 to-primary-700 flex items-center justify-center text-white text-xs font-black uppercase">
                             {session.user.name?.[0] || session.user.email?.[0] || 'A'}
                         </div>
                         <div className="flex-1 min-w-0">
-                            <p className="text-white text-xs font-bold truncate">{session.user.name || 'Admin'}</p>
+                            <p className="text-gray-900 text-xs font-bold truncate">{session.user.name || 'Admin'}</p>
                             <p className="text-gray-500 text-[10px] font-semibold truncate">{session.user.email}</p>
                         </div>
                     </div>
@@ -69,8 +69,8 @@ export default function AdminSidebar() {
                             key={item.href}
                             href={item.href}
                             className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 group ${isActive
-                                ? 'bg-linear-to-b from-primary-500/20 to-primary-700/10 text-white border border-primary-500/20 shadow-sm shadow-primary-500/10'
-                                : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                ? 'bg-primary-50 text-primary-700 border border-primary-100 shadow-[0_2px_10px_rgba(72,115,174,0.05)]'
+                                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                                 }`}
                         >
                             <Icon className={`text-lg shrink-0 ${isActive ? 'text-primary-400' : 'text-gray-500 group-hover:text-gray-300'}`} />
@@ -89,8 +89,8 @@ export default function AdminSidebar() {
                         <Link
                             href="/admin/users"
                             className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 group ${pathname.startsWith('/admin/users')
-                                ? 'bg-linear-to-b from-primary-500/20 to-primary-700/10 text-white border border-primary-500/20 shadow-sm shadow-primary-500/10'
-                                : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                ? 'bg-primary-50 text-primary-700 border border-primary-100 shadow-[0_2px_10px_rgba(72,115,174,0.05)]'
+                                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                                 }`}
                         >
                             <HiOutlineUserGroup className={`text-lg shrink-0 ${pathname.startsWith('/admin/users') ? 'text-primary-400' : 'text-gray-500 group-hover:text-gray-300'}`} />
@@ -101,18 +101,18 @@ export default function AdminSidebar() {
             </nav>
 
             {/* Bottom Actions */}
-            <div className="p-3 space-y-1 border-t border-white/5">
+            <div className="p-3 space-y-1 border-t border-gray-100">
                 <Link
                     href="/"
                     target="_blank"
-                    className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-500 hover:text-primary-400 hover:bg-white/5 transition-all group"
+                    className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-600 hover:text-primary-600 hover:bg-primary-50 transition-all group"
                 >
                     <HiOutlineExternalLink className="text-lg group-hover:text-primary-400" />
                     <span>View Live Site</span>
                 </Link>
                 <button
                     onClick={() => signOut({ callbackUrl: '/admin/login' })}
-                    className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-500 hover:text-red-400 hover:bg-red-500/5 transition-all group"
+                    className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-600 hover:text-red-500 hover:bg-red-50 transition-all group"
                 >
                     <HiOutlineLogout className="text-lg group-hover:text-red-400" />
                     <span>Sign Out</span>

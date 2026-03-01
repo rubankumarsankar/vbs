@@ -14,7 +14,7 @@ export default async function AdminUsersPage() {
     return (
         <div className="w-full">
             <div className="max-w-5xl mx-auto px-6 py-10 animate-fade-up">
-                <div className="mb-10 flex items-center justify-between bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+                <div className="mb-10 flex items-center justify-between text-gray-900 bg-white border border-gray-100 rounded-3xl p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)]">
                     <div>
                         <h1 className="text-2xl font-extrabold text-gray-900 tracking-tight">Team Members</h1>
                         <p className="text-gray-500 font-medium text-sm mt-2">
@@ -26,7 +26,7 @@ export default async function AdminUsersPage() {
                     </button>
                 </div>
 
-                <div className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
+                <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] overflow-hidden">
                     <table className="w-full text-left border-collapse">
                         <thead>
                             <tr className="bg-gray-50 border-b border-gray-100">

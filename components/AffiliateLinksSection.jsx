@@ -44,7 +44,7 @@ export default async function AffiliateLinksSection({ category, limit, title = '
                             href={link.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`group relative bg-white border border-gray-100 rounded-3xl p-7 hover:bg-slate-50 transition-all duration-500 block overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(99,102,241,0.08)] hover:-translate-y-2 ${link.isFeatured ? 'ring-1 ring-amber-500/50 shadow-[0_8px_30px_rgba(245,158,11,0.08)]' : ''}`}
+                            className={`group relative bg-white border border-gray-100 rounded-3xl p-7 hover:bg-[#EDF4FF] transition-all duration-500 block overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(99,102,241,0.08)] hover:-translate-y-2 ${link.isFeatured ? 'ring-1 ring-amber-500/50 shadow-[0_8px_30px_rgba(245,158,11,0.08)]' : ''}`}
                         >
                             {/* Hover Glass Effect */}
                             <div className="absolute inset-0 bg-linear-to-tr from-white/0 via-primary-50/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
@@ -63,7 +63,7 @@ export default async function AffiliateLinksSection({ category, limit, title = '
                                         </span>
                                     )}
                                 </div>
-                                <div className={`w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center border border-gray-100 shadow-sm transition-all duration-300 ${link.isFeatured ? 'group-hover:bg-amber-100 group-hover:rotate-12' : 'group-hover:bg-primary-100 group-hover:-rotate-12'}`}>
+                                <div className={`w-8 h-8 rounded-full bg-[#EDF4FF] flex items-center justify-center border border-gray-100 shadow-sm transition-all duration-300 ${link.isFeatured ? 'group-hover:bg-amber-100 group-hover:rotate-12' : 'group-hover:bg-primary-100 group-hover:-rotate-12'}`}>
                                     <HiOutlineExternalLink className={`transition-colors text-gray-400 ${link.isFeatured ? 'group-hover:text-amber-600' : 'group-hover:text-primary-600'}`} />
                                 </div>
                             </div>
@@ -75,7 +75,7 @@ export default async function AffiliateLinksSection({ category, limit, title = '
                             )}
 
                             <div className="mt-auto relative z-10">
-                                <span className="inline-block text-[10px] font-bold text-gray-500 bg-slate-50 px-2.5 py-1.5 rounded-md border border-gray-100 uppercase tracking-wider">
+                                <span className="inline-block text-[10px] font-bold text-gray-500 bg-[#EDF4FF] px-2.5 py-1.5 rounded-md border border-gray-100 uppercase tracking-wider">
                                     {link.category}
                                 </span>
                             </div>

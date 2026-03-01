@@ -38,7 +38,7 @@ export default function CardsSection({ data }) {
                             const accent = accents[idx % accents.length]
                             return (
                                 <Child key={idx}>
-                                    <div className={`group relative bg-white h-full flex flex-col p-8 rounded-3xl border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] ${accent.border} ${accent.glow} transition-all duration-500 hover:-translate-y-2 overflow-hidden`}>
+                                    <div className={`group relative bg-white/80 backdrop-blur-xl h-full flex flex-col p-8 rounded-3xl border border-gray-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] ${accent.border} ${accent.glow} transition-all duration-500 hover:-translate-y-2 overflow-hidden`}>
                                         {/* Hover gradient glow in background */}
                                         <div className={`absolute inset-0 bg-linear-to-br ${accent.bg} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-3xl`} />
 
@@ -46,7 +46,7 @@ export default function CardsSection({ data }) {
                                         <div className={`absolute top-0 left-0 right-0 h-1 bg-linear-to-r ${accent.icon} opacity-50 group-hover:opacity-100 transition-opacity duration-300`} />
 
                                         <div className="relative z-10 flex flex-col h-full">
-                                            <div className={`w-14 h-14 rounded-2xl bg-white border border-gray-100 flex items-center justify-center mb-6 shadow-sm shadow-gray-200/50 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-gray-50`}>
+                                            <div className={`w-14 h-14 rounded-2xl bg-white border border-gray-100 flex items-center justify-center mb-6 shadow-sm shadow-gray-200/50 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-[#EDF4FF]`}>
                                                 <span className={`text-2xl bg-clip-text text-transparent bg-linear-to-br ${accent.icon}`}>
                                                     {card.icon}
                                                 </span>

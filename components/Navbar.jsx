@@ -26,10 +26,10 @@ export default function Navbar({ settings }) {
     }
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 w-full">
-            {/* Glass navbar bar */}
-            <div className="bg-white/80 backdrop-blur-2xl border-b border-gray-100/80 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
-                <div className="max-w-[1320px] mx-auto flex items-center justify-between h-[72px] px-5 lg:px-8">
+        <header className="fixed top-4 left-0 right-0 z-50 w-full px-4 lg:px-8 flex justify-center pointer-events-none">
+            {/* Floating Glass navbar */}
+            <div className="pointer-events-auto w-full max-w-[1320px] bg-white/75 backdrop-blur-xl border border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.06)] rounded-2xl transition-all duration-300">
+                <div className="flex items-center justify-between h-[72px] px-5 lg:px-6">
 
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-3 group shrink-0">
@@ -98,7 +98,7 @@ export default function Navbar({ settings }) {
 
             {/* Mobile Menu */}
             {open && (
-                <div className="absolute top-[72px] left-0 right-0 bg-white/95 backdrop-blur-2xl shadow-2xl p-5 border-b border-gray-100 lg:hidden flex flex-col gap-1 z-50">
+                <div className="pointer-events-auto absolute top-[84px] left-4 right-4 bg-white/95 backdrop-blur-2xl shadow-2xl p-6 border border-gray-100 rounded-2xl lg:hidden flex flex-col gap-1 z-50 mx-auto max-w-[1320px]">
                     {navLinks.map((link, i) => {
                         const isActive = checkActive(link.url)
                         return (

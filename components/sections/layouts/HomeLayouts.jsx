@@ -17,7 +17,7 @@ export function HomeHero({ data }) {
     return (
         <section className="relative w-full overflow-hidden">
             {/* Dark Hero */}
-            <div className="relative bg-linear-to-br from-secondary-600 via-[#253545] to-[#162030] w-full pt-28 pb-32 px-6 flex flex-col items-center justify-center text-center overflow-hidden z-10">
+            <div className="relative bg-linear-to-br from-secondary-600 via-[#253545] to-[#162030] w-full pt-40 pb-36 px-6 flex flex-col items-center justify-center text-center overflow-hidden z-10">
 
                 {/* Teal glow orbs */}
                 <div className="absolute top-[-10%] right-[-5%] w-[50%] h-[50%] bg-primary-500/8 rounded-full blur-[100px] pointer-events-none" />
@@ -73,22 +73,7 @@ export function HomeHero({ data }) {
                 </div>
             </div>
 
-            {/* Stats */}
-            <div className="relative max-w-5xl mx-auto -mt-2 px-6 z-20">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                    {[
-                        { val: '10+', label: 'Years of Experience' },
-                        { val: '200+', label: 'Projects Delivered' },
-                        { val: '60+', label: 'Tech Wizards' },
-                        { val: '4', label: 'Locations' },
-                    ].map((s, i) => (
-                        <div key={i} className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md hover:border-primary-200 hover:-translate-y-1 transition-all">
-                            <h3 className="text-3xl lg:text-4xl font-black text-primary-600 mb-1">{s.val}</h3>
-                            <p className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">{s.label}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
+
         </section>
     )
 }
@@ -106,7 +91,7 @@ export function HomeAudience({ data }) {
                         return (
                             <div
                                 key={i}
-                                className={`group bg-white border border-gray-100 shadow-sm rounded-2xl p-7 hover:bg-white/5 hover:border-primary-300 hover:shadow-sm hover:-translate-y-1 transition-all duration-300`}
+                                className={`group bg-white/80 backdrop-blur-xl border border-gray-100 rounded-2xl p-7 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] hover:-translate-y-1.5 transition-all duration-500`}
                             >
                                 <div className={`w-12 h-12 rounded-xl bg-linear-to-br ${color} flex items-center justify-center mb-5 shadow-lg ${shadow} group-hover:scale-110 transition-transform`}>
                                     <Icon className="text-white text-xl" />
@@ -171,7 +156,7 @@ export function HomeFramework({ data }) {
                             <Link
                                 key={i}
                                 href={card.href || '#'}
-                                className="group bg-white/80 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 rounded-3xl p-8 block hover:bg-white/5 hover:border-primary-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
+                                className="group bg-white/80 backdrop-blur-xl border border-gray-100 rounded-3xl p-8 block shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] hover:-translate-y-1.5 transition-all duration-500 relative overflow-hidden"
                             >
 
                                 <div className={`w-14 h-14 rounded-2xl bg-linear-to-br ${color} flex items-center justify-center mb-6 shadow-lg shadow-primary-500/20 group-hover:scale-110 transition-transform`}>
@@ -207,7 +192,7 @@ export function HomeStandards({ data }) {
                     {data.cards?.map((item, i) => {
                         const Icon = iconMap[item.icon] || HiOutlineCheckCircle
                         return (
-                            <div key={i} className="bg-white border border-gray-100 shadow-sm rounded-3xl p-7 hover:bg-white/5 hover:border-gray-200 transition-colors group">
+                            <div key={i} className="bg-white/80 backdrop-blur-xl border border-gray-100 rounded-3xl p-7 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] hover:-translate-y-1 transition-all duration-500 group">
                                 <div className="w-12 h-12 rounded-xl bg-linear-to-b from-primary-500/20 to-primary-300/20 border border-primary-100 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                                     <Icon className="text-primary-500 text-xl" />
                                 </div>

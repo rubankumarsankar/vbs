@@ -115,7 +115,7 @@ export default function EditBlogPost({ params }) {
 
 
                     {/* Metadata Card */}
-                    <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm">
+                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)]">
                         <h2 className="text-xl font-extrabold text-gray-900 mb-6">Post Metadata</h2>
 
                         <div className="space-y-5">
@@ -127,14 +127,14 @@ export default function EditBlogPost({ params }) {
                                     value={formData.title}
                                     onChange={handleTitleChange}
                                     placeholder="e.g. 10 Next.js Performance Tricks for 2026"
-                                    className="w-full bg-gray-50 border-2 border-transparent text-gray-900 rounded-xl px-4 py-3 outline-none focus:border-violet-500/30 focus:bg-white focus:ring-4 focus:ring-violet-500/10 transition-all font-medium"
+                                    className="w-full bg-gray-50 border-2 border-transparent text-gray-900 rounded-xl px-4 py-3 outline-none focus:border-primary-400 focus:bg-white focus:ring-4 focus:ring-primary-500/20 shadow-sm focus:shadow-md transition-all font-medium"
                                 />
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                 <div>
                                     <label className="block text-sm font-bold text-gray-700 mb-2">URL Slug</label>
-                                    <div className="flex bg-gray-50 rounded-xl border-2 border-transparent focus-within:border-violet-500/30 focus-within:bg-white focus-within:ring-4 focus-within:ring-violet-500/10 transition-all">
+                                    <div className="flex bg-gray-50 rounded-xl border-2 border-transparent focus-within:border-primary-400 focus-within:bg-white focus-within:ring-4 focus-within:ring-primary-500/20 shadow-sm focus-within:shadow-md transition-all">
                                         <span className="flex items-center pl-4 text-gray-400 font-bold text-sm select-none">/blog/</span>
                                         <input
                                             type="text"
@@ -152,7 +152,7 @@ export default function EditBlogPost({ params }) {
                                         value={formData.featuredImg}
                                         onChange={e => setFormData({ ...formData, featuredImg: e.target.value })}
                                         placeholder="https://..."
-                                        className="w-full bg-gray-50 border-2 border-transparent text-gray-900 rounded-xl px-4 py-3 outline-none focus:border-violet-500/30 focus:bg-white focus:ring-4 focus:ring-violet-500/10 transition-all font-medium text-sm"
+                                        className="w-full bg-gray-50 border-2 border-transparent text-gray-900 rounded-xl px-4 py-3 outline-none focus:border-primary-400 focus:bg-white focus:ring-4 focus:ring-primary-500/20 shadow-sm focus:shadow-md transition-all font-medium text-sm"
                                     />
                                 </div>
                             </div>
@@ -163,14 +163,14 @@ export default function EditBlogPost({ params }) {
                                     rows={2}
                                     value={formData.excerpt}
                                     onChange={e => setFormData({ ...formData, excerpt: e.target.value })}
-                                    className="w-full bg-gray-50 border-2 border-transparent text-gray-900 rounded-xl px-4 py-3 outline-none focus:border-violet-500/30 focus:bg-white focus:ring-4 focus:ring-violet-500/10 transition-all font-medium text-sm resize-y"
+                                    className="w-full bg-gray-50 border-2 border-transparent text-gray-900 rounded-xl px-4 py-3 outline-none focus:border-primary-400 focus:bg-white focus:ring-4 focus:ring-primary-500/20 shadow-sm focus:shadow-md transition-all font-medium text-sm resize-y"
                                 />
                             </div>
                         </div>
                     </div>
 
                     {/* Content Card */}
-                    <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm">
+                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)]">
                         <div className="flex items-center justify-between mb-6">
                             <h2 className="text-xl font-extrabold text-gray-900">Article Content</h2>
                             <span className="text-xs font-bold text-gray-400 bg-gray-50 px-3 py-1 rounded-md">Markdown Supported</span>
@@ -186,7 +186,7 @@ export default function EditBlogPost({ params }) {
                     </div>
 
                     {/* Submit Bar */}
-                    <div className="bg-white border border-gray-100 rounded-3xl p-6 shadow-sm flex items-center justify-between">
+                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-6 shadow-[0_4px_20px_rgb(0,0,0,0.03)] flex items-center justify-between">
                         <label className="flex items-center gap-3 cursor-pointer group">
                             <div className="relative">
                                 <input
