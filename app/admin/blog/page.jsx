@@ -65,7 +65,7 @@ export default async function AdminBlogDashboard() {
                                         </span>
                                     </td>
                                     <td className="py-4 px-6 text-right">
-                                        <Link href={`/admin/blog/${post.id}/edit`} className="text-violet-600 hover:text-violet-800 font-bold text-sm transition-colors">Edit</Link>
+                                        <Link href={`/admin/blog/${post.id}/edit`} className="text-primary-600 hover:text-primary-800 font-bold text-sm transition-colors">Edit</Link>
                                     </td>
                                 </tr>
                             )) : (

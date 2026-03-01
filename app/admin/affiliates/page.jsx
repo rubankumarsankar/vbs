@@ -7,8 +7,8 @@ import { showSuccess, showError, showConfirm } from '@/lib/swal'
 const PLATFORMS = ['Coursera', 'Udemy', 'AWS', 'Google', 'LinkedIn Learning', 'Skillshare', 'edX', 'Custom', 'Other']
 const CATEGORIES = ['Course', 'Tool', 'Certification', 'Book', 'Software', 'Hosting', 'Other']
 
-const inputClass = "w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:bg-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 text-sm font-medium text-gray-900 transition-all"
-const selectClass = "w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:bg-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 text-sm font-medium text-gray-900 transition-all appearance-none cursor-pointer"
+const inputClass = "w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:bg-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 text-sm font-medium text-gray-900 transition-all"
+const selectClass = "w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:bg-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 text-sm font-medium text-gray-900 transition-all appearance-none cursor-pointer"
 
 export default function AdminAffiliatesPage() {
     const [links, setLinks] = useState([])
@@ -133,10 +133,10 @@ export default function AdminAffiliatesPage() {
             <div className="max-w-6xl mx-auto px-6 py-10 animate-fade-up">
                 {/* Header */}
                 <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between bg-white border border-gray-100 rounded-3xl p-8 shadow-sm relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-40 h-40 bg-indigo-50/40 rounded-bl-full -z-10" />
+                    <div className="absolute top-0 right-0 w-40 h-40 bg-primary-50/40 rounded-bl-full -z-10" />
                     <div>
                         <div className="flex items-center gap-3 mb-2">
-                            <div className="w-10 h-10 rounded-xl bg-linear-to-b from-violet-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-violet-500/20">
+                            <div className="w-10 h-10 rounded-xl bg-linear-to-b from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/20">
                                 <HiOutlineLink className="text-white text-lg" />
                             </div>
                             <h1 className="text-2xl font-extrabold text-gray-900 tracking-tight">Affiliate Links</h1>
@@ -157,9 +157,9 @@ export default function AdminAffiliatesPage() {
                 {/* Stats Bar */}
                 <div className="grid grid-cols-3 gap-4 mb-8">
                     {[
-                        { label: 'Total Links', value: links.length, color: 'indigo' },
+                        { label: 'Total Links', value: links.length, color: 'primary' },
                         { label: 'Active', value: activeCount, color: 'emerald' },
-                        { label: 'Total Clicks', value: totalClicks, color: 'violet' },
+                        { label: 'Total Clicks', value: totalClicks, color: 'primary' },
                     ].map(stat => (
                         <div key={stat.label} className={`bg-white border border-gray-100 rounded-2xl p-5 text-center shadow-sm`}>
                             <p className="text-2xl font-black text-gray-900">{stat.value}</p>
@@ -210,7 +210,7 @@ export default function AdminAffiliatesPage() {
 
                             <div className="flex items-center gap-6">
                                 <label className="flex items-center gap-2 cursor-pointer">
-                                    <input type="checkbox" checked={form.isActive} onChange={e => setForm({ ...form, isActive: e.target.checked })} className="w-4 h-4 rounded accent-indigo-600" />
+                                    <input type="checkbox" checked={form.isActive} onChange={e => setForm({ ...form, isActive: e.target.checked })} className="w-4 h-4 rounded accent-primary-600" />
                                     <span className="text-sm font-semibold text-gray-700">Active</span>
                                 </label>
                                 <label className="flex items-center gap-2 cursor-pointer">
@@ -241,11 +241,11 @@ export default function AdminAffiliatesPage() {
                 ) : (
                     <div className="space-y-3">
                         {links.map(link => (
-                            <div key={link.id} className={`bg-white border rounded-2xl p-5 shadow-sm flex items-start gap-4 group transition-all hover:shadow-md ${link.isActive ? 'border-gray-100 hover:border-indigo-200' : 'border-gray-100 opacity-60'
+                            <div key={link.id} className={`bg-white border rounded-2xl p-5 shadow-sm flex items-start gap-4 group transition-all hover:shadow-md ${link.isActive ? 'border-gray-100 hover:border-primary-200' : 'border-gray-100 opacity-60'
                                 }`}>
                                 {/* Platform Badge */}
-                                <div className="w-11 h-11 rounded-xl bg-linear-to-b from-indigo-50 to-violet-50 flex items-center justify-center shrink-0 border border-indigo-100">
-                                    <HiOutlineLink className="text-indigo-500 text-lg" />
+                                <div className="w-11 h-11 rounded-xl bg-linear-to-b from-primary-50 to-primary-50 flex items-center justify-center shrink-0 border border-primary-100">
+                                    <HiOutlineLink className="text-primary-500 text-lg" />
                                 </div>
 
                                 {/* Content */}
@@ -257,7 +257,7 @@ export default function AdminAffiliatesPage() {
                                                 <HiOutlineStar className="text-xs" /> Featured
                                             </span>
                                         )}
-                                        <span className="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">{link.platform}</span>
+                                        <span className="text-[10px] font-bold text-primary-600 bg-primary-50 px-2 py-0.5 rounded-full">{link.platform}</span>
                                         <span className="text-[10px] font-bold text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">{link.category}</span>
                                     </div>
                                     <p className="text-xs text-gray-400 font-mono truncate mb-1">{link.url}</p>
@@ -277,10 +277,10 @@ export default function AdminAffiliatesPage() {
                                     <button onClick={() => toggleActive(link)} title="Toggle Active" className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${link.isActive ? 'text-emerald-500 bg-emerald-50' : 'text-gray-400 hover:text-emerald-500 hover:bg-emerald-50'}`}>
                                         <HiOutlineEye className="text-sm" />
                                     </button>
-                                    <a href={link.url} target="_blank" rel="noopener noreferrer" title="Open Link" className="w-8 h-8 rounded-lg flex items-center justify-center text-gray-400 hover:text-indigo-500 hover:bg-indigo-50 transition-colors">
+                                    <a href={link.url} target="_blank" rel="noopener noreferrer" title="Open Link" className="w-8 h-8 rounded-lg flex items-center justify-center text-gray-400 hover:text-primary-500 hover:bg-primary-50 transition-colors">
                                         <HiOutlineExternalLink className="text-sm" />
                                     </a>
-                                    <button onClick={() => startEdit(link)} title="Edit" className="w-8 h-8 rounded-lg flex items-center justify-center text-gray-400 hover:text-violet-500 hover:bg-violet-50 transition-colors">
+                                    <button onClick={() => startEdit(link)} title="Edit" className="w-8 h-8 rounded-lg flex items-center justify-center text-gray-400 hover:text-primary-500 hover:bg-primary-50 transition-colors">
                                         <HiOutlinePencil className="text-sm" />
                                     </button>
                                     <button onClick={() => handleDelete(link.id)} title="Delete" className="w-8 h-8 rounded-lg flex items-center justify-center text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors">

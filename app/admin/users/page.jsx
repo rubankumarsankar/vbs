@@ -41,7 +41,7 @@ export default async function AdminUsersPage() {
                                 <tr key={user.id} className="hover:bg-gray-50 transition-colors">
                                     <td className="py-4 px-6">
                                         <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-full bg-linear-to-br from-violet-100 to-cyan-100 flex items-center justify-center text-violet-700 font-bold border border-violet-200">
+                                            <div className="w-10 h-10 rounded-full bg-linear-to-br from-primary-100 to-primary-100 flex items-center justify-center text-primary-700 font-bold border border-primary-200">
                                                 {user.name.charAt(0)}
                                             </div>
                                             <div>
@@ -54,7 +54,7 @@ export default async function AdminUsersPage() {
                                         <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border ${user.role === 'SUPER_ADMIN'
                                             ? 'bg-purple-50 text-purple-700 border-purple-200'
                                             : user.role === 'EDITOR'
-                                                ? 'bg-cyan-50 text-cyan-700 border-cyan-200'
+                                                ? 'bg-primary-50 text-primary-700 border-primary-200'
                                                 : 'bg-gray-100 text-gray-600 border-gray-200'
                                             }`}>
                                             {user.role}
@@ -64,7 +64,7 @@ export default async function AdminUsersPage() {
                                         {new Date(user.createdAt).toLocaleDateString()}
                                     </td>
                                     <td className="py-4 px-6 text-right">
-                                        <button className="text-violet-600 hover:text-violet-800 font-bold text-sm transition-colors">Edit</button>
+                                        <button className="text-primary-600 hover:text-primary-800 font-bold text-sm transition-colors">Edit</button>
                                         <button className="text-red-500 hover:text-red-700 font-bold text-sm ml-4 transition-colors">Revoke</button>
                                     </td>
                                 </tr>

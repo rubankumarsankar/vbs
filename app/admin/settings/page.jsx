@@ -103,13 +103,13 @@ export default function AdminSettingsPage() {
         return <div className="p-10 text-gray-400 font-bold animate-pulse text-center">Loading Configuration...</div>
     }
 
-    const inputClass = "w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:bg-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 text-sm font-medium text-gray-900 transition-all"
+    const inputClass = "w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:bg-white focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 text-sm font-medium text-gray-900 transition-all"
 
     return (
         <div className="w-full">
             <div className="max-w-4xl mx-auto px-6 py-10 animate-fade-up">
                 <div className="mb-10 flex items-center justify-between bg-white border border-gray-100 rounded-3xl p-8 shadow-sm relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-50/50 rounded-bl-full -z-10" />
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-primary-50/50 rounded-bl-full -z-10" />
                     <div>
                         <h1 className="text-2xl font-extrabold text-gray-900 tracking-tight">Global Configurations</h1>
                         <p className="text-gray-500 font-medium text-sm mt-2 max-w-xl leading-relaxed">
@@ -127,9 +127,9 @@ export default function AdminSettingsPage() {
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                     {/* Identity Block */}
-                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-sm transition-all hover:shadow-md hover:border-indigo-100">
+                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-sm transition-all hover:shadow-md hover:border-primary-100">
                         <div className="mb-6 pb-4 border-b border-gray-50 flex items-center gap-3">
-                            <span className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm">1</span>
+                            <span className="w-8 h-8 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center font-bold text-sm">1</span>
                             <h2 className="text-lg font-extrabold tracking-tight">Brand Identity</h2>
                         </div>
 
@@ -161,20 +161,20 @@ export default function AdminSettingsPage() {
                     </div>
 
                     {/* Navbar Links Block */}
-                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-sm transition-all hover:shadow-md hover:border-indigo-100">
+                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-sm transition-all hover:shadow-md hover:border-primary-100">
                         <div className="mb-6 pb-4 border-b border-gray-50 flex items-center justify-between">
                             <div className="flex items-center gap-3">
-                                <span className="w-8 h-8 rounded-lg bg-violet-50 text-violet-600 flex items-center justify-center font-bold text-sm">2</span>
+                                <span className="w-8 h-8 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center font-bold text-sm">2</span>
                                 <h2 className="text-lg font-extrabold tracking-tight">Navigation Links</h2>
                             </div>
-                            <button type="button" onClick={addNavLink} className="text-xs font-bold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 px-4 py-2 rounded-lg transition-colors">
+                            <button type="button" onClick={addNavLink} className="text-xs font-bold text-primary-600 bg-primary-50 hover:bg-primary-100 px-4 py-2 rounded-lg transition-colors">
                                 + Add Link
                             </button>
                         </div>
 
                         <div className="space-y-3">
                             {(data.navLinks || []).map((link, idx) => (
-                                <div key={idx} className="flex items-center gap-2 bg-gray-50/80 rounded-xl p-3 border border-gray-100 group hover:border-indigo-100 transition-colors">
+                                <div key={idx} className="flex items-center gap-2 bg-gray-50/80 rounded-xl p-3 border border-gray-100 group hover:border-primary-100 transition-colors">
                                     <div className="flex flex-col gap-0.5">
                                         <button type="button" onClick={() => moveNavLink(idx, 'up')} disabled={idx === 0} className="text-gray-400 hover:text-gray-700 disabled:opacity-30 text-[10px] font-bold leading-none">▲</button>
                                         <button type="button" onClick={() => moveNavLink(idx, 'down')} disabled={idx === (data.navLinks || []).length - 1} className="text-gray-400 hover:text-gray-700 disabled:opacity-30 text-[10px] font-bold leading-none">▼</button>
@@ -185,14 +185,14 @@ export default function AdminSettingsPage() {
                                         placeholder="Label"
                                         value={link.label}
                                         onChange={e => updateNavLink(idx, 'label', e.target.value)}
-                                        className="flex-1 bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/10 transition-all min-w-0"
+                                        className="flex-1 bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-500/10 transition-all min-w-0"
                                     />
                                     <input
                                         type="text"
                                         placeholder="/url-path"
                                         value={link.url}
                                         onChange={e => updateNavLink(idx, 'url', e.target.value)}
-                                        className="flex-1 bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-medium font-mono text-gray-600 outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/10 transition-all min-w-0"
+                                        className="flex-1 bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm font-medium font-mono text-gray-600 outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-500/10 transition-all min-w-0"
                                     />
                                     <button type="button" onClick={() => removeNavLink(idx)} className="w-8 h-8 rounded-lg flex items-center justify-center text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors shrink-0 text-sm font-bold">
                                         ×
@@ -206,9 +206,9 @@ export default function AdminSettingsPage() {
                     </div>
 
                     {/* Footer Block */}
-                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-sm transition-all hover:shadow-md hover:border-indigo-100">
+                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-sm transition-all hover:shadow-md hover:border-primary-100">
                         <div className="mb-6 pb-4 border-b border-gray-50 flex items-center gap-3">
-                            <span className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm">3</span>
+                            <span className="w-8 h-8 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center font-bold text-sm">3</span>
                             <h2 className="text-lg font-extrabold tracking-tight">Footer Injection</h2>
                         </div>
 
@@ -231,9 +231,9 @@ export default function AdminSettingsPage() {
                     </div>
 
                     {/* SEO Block */}
-                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-sm transition-all hover:shadow-md hover:border-indigo-100">
+                    <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl p-8 shadow-sm transition-all hover:shadow-md hover:border-primary-100">
                         <div className="mb-6 pb-4 border-b border-gray-50 flex items-center gap-3">
-                            <span className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm">4</span>
+                            <span className="w-8 h-8 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center font-bold text-sm">4</span>
                             <h2 className="text-lg font-extrabold tracking-tight">Default Search Engine Config</h2>
                         </div>
 
@@ -253,7 +253,7 @@ export default function AdminSettingsPage() {
                         <button
                             type="submit"
                             disabled={saving}
-                            className="btn-primary bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold px-8 py-4 disabled:opacity-60 shadow-lg shadow-indigo-500/30 transition-all hover:shadow-indigo-500/40 hover:-translate-y-0.5 rounded-xl w-full sm:w-auto"
+                            className="btn-primary bg-primary-600 hover:bg-primary-700 text-white text-sm font-bold px-8 py-4 disabled:opacity-60 shadow-lg shadow-primary-500/30 transition-all hover:shadow-primary-500/40 hover:-translate-y-0.5 rounded-xl w-full sm:w-auto"
                         >
                             {saving ? 'Synchronizing State...' : 'Commit Global Master Settings'}
                         </button>

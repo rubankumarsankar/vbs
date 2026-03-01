@@ -9,16 +9,20 @@ import { showSuccess, showError } from '@/lib/swal'
 const schema = z.object({
     name: z.string().min(2, 'Name must be at least 2 characters'),
     email: z.string().email('Enter a valid email address'),
-    phone: z.string().optional(),
+    subject: z.string().min(1, 'Please select a subject'),
     message: z.string().min(10, 'Message must be at least 10 characters'),
 })
+
+const SUBJECTS = [
+    'General Query',
+    'Learning Guidance',
+    'Feedback',
+    'Partnership / Collaboration',
+]
 
 const inputClasses = 'w-full bg-white border-2 border-gray-100 text-gray-900 placeholder-gray-400 rounded-xl px-4 py-3.5 focus:outline-none focus:border-primary-400 focus:ring-4 focus:ring-primary-500/10 transition-all duration-200 font-medium'
 
 export default function ContactForm() {
-    const [submitted, setSubmitted] = useState(false)
-    const [error, setError] = useState('')
-
     const {
         register,
         handleSubmit,
@@ -34,19 +38,17 @@ export default function ContactForm() {
                 body: JSON.stringify(data),
             })
             if (!res.ok) throw new Error('Failed to submit')
-            showSuccess('Message sent! We\'ll get back to you within 24 hours.')
+            showSuccess('Message sent! We\'ll get back to you within a reasonable timeframe.')
             reset()
         } catch {
             showError('Something went wrong. Please try again.')
         }
     }
 
-
-
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-            <h3 className="text-2xl font-extrabold text-gray-900 mb-6 border-b border-gray-100 pb-4">
-                Send a Message
+            <h3 className="text-xl font-extrabold text-gray-900 mb-6 border-b border-gray-100 pb-4 tracking-wider uppercase">
+                Get in Touch
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -56,7 +58,7 @@ export default function ContactForm() {
                     </label>
                     <input
                         {...register('name')}
-                        placeholder="John Doe"
+                        placeholder="Your full name"
                         className={inputClasses}
                     />
                     {errors.name && <p className="mt-1.5 text-sm font-semibold text-red-500">{errors.name.message}</p>}
@@ -69,7 +71,7 @@ export default function ContactForm() {
                     <input
                         {...register('email')}
                         type="email"
-                        placeholder="john@example.com"
+                        placeholder="you@example.com"
                         className={inputClasses}
                     />
                     {errors.email && <p className="mt-1.5 text-sm font-semibold text-red-500">{errors.email.message}</p>}
@@ -77,13 +79,20 @@ export default function ContactForm() {
             </div>
 
             <div>
-                <label className="block text-sm font-bold text-gray-700 mb-2">Phone (optional)</label>
-                <input
-                    {...register('phone')}
-                    type="tel"
-                    placeholder="+91 98765 43210"
-                    className={inputClasses}
-                />
+                <label className="block text-sm font-bold text-gray-700 mb-2">
+                    Subject <span className="text-red-500">*</span>
+                </label>
+                <select
+                    {...register('subject')}
+                    className={`${inputClasses} appearance-none cursor-pointer`}
+                    defaultValue=""
+                >
+                    <option value="" disabled>Select a subject...</option>
+                    {SUBJECTS.map((s) => (
+                        <option key={s} value={s}>{s}</option>
+                    ))}
+                </select>
+                {errors.subject && <p className="mt-1.5 text-sm font-semibold text-red-500">{errors.subject.message}</p>}
             </div>
 
             <div>
@@ -93,20 +102,18 @@ export default function ContactForm() {
                 <textarea
                     {...register('message')}
                     rows={5}
-                    placeholder="Tell us about your goals or questions..."
+                    placeholder="How can we help you?"
                     className={`${inputClasses} resize-none`}
                 />
                 {errors.message && <p className="mt-1.5 text-sm font-semibold text-red-500">{errors.message.message}</p>}
             </div>
-
-
 
             <button
                 type="submit"
                 disabled={isSubmitting}
                 className="w-full btn-primary py-4 mt-2 text-lg disabled:opacity-60"
             >
-                {isSubmitting ? 'Sending...' : 'Send Message →'}
+                {isSubmitting ? 'Sending...' : 'Submit →'}
             </button>
         </form>
     )

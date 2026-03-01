@@ -8,6 +8,8 @@ import { DSHero, DSSkillClusters, DSEvaluation, DSAIImpact, DSMistakes, DSWhereN
 import { CoursesHero, CoursesIntro, CoursesStructure, CoursesProgression, CoursesFreePaid, CoursesEvalAndMistakes, CoursesConnecting } from './sections/layouts/CoursesLayouts'
 import { CareerHero, CareerIntro, CareerWhyClarity, CareerProgression, CareerGrowth, CareerAIAndMistakes, CareerAligning } from './sections/layouts/CareerLayouts'
 import { HomeHero, HomeAudience, HomeChallenge, HomeFramework, HomeStandards } from './sections/layouts/HomeLayouts'
+import { AboutHero, AboutIntro, AboutAudience, AboutApproach, AboutDifferent, AboutCTA } from './sections/layouts/AboutLayouts'
+import { ContactHero, ContactFormSection } from './sections/layouts/ContactLayouts'
 
 const LAYOUT_MAP = {
     // Home
@@ -42,6 +44,18 @@ const LAYOUT_MAP = {
     'career_growth': CareerGrowth,
     'career_ai_mistakes': CareerAIAndMistakes,
     'career_aligning': CareerAligning,
+
+    // About
+    'about_hero': AboutHero,
+    'about_intro': AboutIntro,
+    'about_audience': AboutAudience,
+    'about_approach': AboutApproach,
+    'about_different': AboutDifferent,
+    'about_cta': AboutCTA,
+
+    // Contact
+    'contact_hero': ContactHero,
+    'contact_form': ContactFormSection,
 }
 
 export default function SectionRenderer({ sections }) {

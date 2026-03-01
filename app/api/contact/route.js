@@ -5,6 +5,7 @@ import { NextResponse } from 'next/server'
 const schema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
+  subject: z.string().optional(),
   phone: z.string().optional(),
   message: z.string().min(10),
 })

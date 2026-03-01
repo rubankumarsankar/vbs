@@ -16,7 +16,6 @@ import {
 export default async function AdminDashboard() {
     const session = await getServerSession(authOptions)
 
-    // Fetch stats
     const [sectionCount, contactCount, pageCount, blogCount, affiliateCount, recentContacts] = await Promise.all([
         prisma.section.count(),
         prisma.contact.count(),
@@ -27,11 +26,11 @@ export default async function AdminDashboard() {
     ])
 
     const stats = [
-        { label: 'CMS Pages', value: pageCount, icon: HiOutlineDocumentText, color: 'from-violet-500 to-indigo-500', shadow: 'shadow-violet-500/20' },
-        { label: 'Total Sections', value: sectionCount, icon: HiOutlineViewGrid, color: 'from-cyan-500 to-blue-500', shadow: 'shadow-cyan-500/20' },
-        { label: 'Blog Posts', value: blogCount, icon: HiOutlinePencilAlt, color: 'from-amber-500 to-orange-500', shadow: 'shadow-amber-500/20' },
+        { label: 'CMS Pages', value: pageCount, icon: HiOutlineDocumentText, color: 'from-primary-500 to-primary-700', shadow: 'shadow-primary-500/20' },
+        { label: 'Total Sections', value: sectionCount, icon: HiOutlineViewGrid, color: 'from-primary-400 to-primary-600', shadow: 'shadow-primary-400/20' },
+        { label: 'Blog Posts', value: blogCount, icon: HiOutlinePencilAlt, color: 'from-accent-500 to-accent-700', shadow: 'shadow-accent-500/20' },
         { label: 'Affiliate Links', value: affiliateCount, icon: HiOutlineLink, color: 'from-emerald-500 to-teal-500', shadow: 'shadow-emerald-500/20' },
-        { label: 'Enquiries', value: contactCount, icon: HiOutlineMail, color: 'from-pink-500 to-rose-500', shadow: 'shadow-pink-500/20' },
+        { label: 'Enquiries', value: contactCount, icon: HiOutlineMail, color: 'from-secondary-500 to-secondary-600', shadow: 'shadow-secondary-500/20' },
     ]
 
     const quickActions = [
@@ -45,11 +44,11 @@ export default async function AdminDashboard() {
         <div className="w-full">
             <div className="max-w-6xl mx-auto px-6 py-10 animate-fade-up">
                 {/* Header */}
-                <div className="mb-10 bg-linear-to-b from-[#0f0f1a] to-[#1a1a2e] rounded-3xl p-8 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-violet-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+                <div className="mb-10 bg-linear-to-b from-secondary-600 to-[#162030] rounded-3xl p-8 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent-400/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
                     <div className="relative z-10">
-                        <p className="text-violet-400 text-xs font-bold uppercase tracking-widest mb-2">Welcome back</p>
+                        <p className="text-primary-400 text-xs font-bold uppercase tracking-widest mb-2">Welcome back</p>
                         <h1 className="text-3xl font-extrabold text-white tracking-tight">
                             {session?.user?.name || 'Admin'} 👋
                         </h1>
@@ -64,8 +63,8 @@ export default async function AdminDashboard() {
                     {stats.map(stat => {
                         const Icon = stat.icon
                         return (
-                            <div key={stat.label} className={`bg-white border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow group`}>
-                                <div className={`w-10 h-10 rounded-xl bg-linear-to- ${stat.color} flex items-center justify-center mb-3 shadow-lg ${stat.shadow} group-hover:scale-110 transition-transform`}>
+                            <div key={stat.label} className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow group">
+                                <div className={`w-10 h-10 rounded-xl bg-linear-to-br ${stat.color} flex items-center justify-center mb-3 shadow-lg ${stat.shadow} group-hover:scale-110 transition-transform`}>
                                     <Icon className="text-white text-lg" />
                                 </div>
                                 <p className="text-2xl font-black text-gray-900">{stat.value}</p>
@@ -86,12 +85,12 @@ export default async function AdminDashboard() {
                                     key={action.href}
                                     href={action.href}
                                     target={action.target || '_self'}
-                                    className="bg-white border border-gray-100 rounded-2xl p-5 block group hover:border-indigo-200 hover:shadow-md transition-all"
+                                    className="bg-white border border-gray-100 rounded-2xl p-5 block group hover:border-primary-200 hover:shadow-md transition-all"
                                 >
-                                    <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center mb-3 group-hover:bg-indigo-50 group-hover:scale-110 transition-all">
-                                        <Icon className="text-gray-400 text-lg group-hover:text-indigo-600 transition-colors" />
+                                    <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center mb-3 group-hover:bg-primary-50 group-hover:scale-110 transition-all">
+                                        <Icon className="text-gray-400 text-lg group-hover:text-primary-600 transition-colors" />
                                     </div>
-                                    <div className="text-sm font-bold text-gray-900 group-hover:text-indigo-700 transition-colors flex items-center gap-1">
+                                    <div className="text-sm font-bold text-gray-900 group-hover:text-primary-700 transition-colors flex items-center gap-1">
                                         {action.label}
                                         <HiOutlineArrowRight className="text-xs opacity-0 group-hover:opacity-100 translate-x-0 group-hover:translate-x-1 transition-all" />
                                     </div>
@@ -106,7 +105,7 @@ export default async function AdminDashboard() {
                 <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm">
                     <div className="flex items-center justify-between mb-6">
                         <h2 className="text-lg font-extrabold text-gray-900 tracking-tight flex items-center gap-2">
-                            <HiOutlineMail className="text-xl text-indigo-500" />
+                            <HiOutlineMail className="text-xl text-primary-500" />
                             Recent Enquiries
                         </h2>
                         <span className="text-xs font-bold text-gray-400 bg-gray-50 px-3 py-1.5 rounded-lg">Last 5</span>
@@ -117,8 +116,8 @@ export default async function AdminDashboard() {
                     ) : (
                         <div className="space-y-3">
                             {recentContacts.map(c => (
-                                <div key={c.id} className="flex items-start gap-4 bg-gray-50/50 rounded-xl p-4 border border-gray-100 hover:border-indigo-100 transition-colors">
-                                    <div className="w-9 h-9 rounded-lg bg-linear-to-b from-indigo-100 to-violet-100 flex items-center justify-center text-indigo-600 text-xs font-black uppercase shrink-0">
+                                <div key={c.id} className="flex items-start gap-4 bg-gray-50/50 rounded-xl p-4 border border-gray-100 hover:border-primary-100 transition-colors">
+                                    <div className="w-9 h-9 rounded-lg bg-linear-to-b from-primary-100 to-primary-50 flex items-center justify-center text-primary-600 text-xs font-black uppercase shrink-0">
                                         {c.name?.[0] || '?'}
                                     </div>
                                     <div className="flex-1 min-w-0">

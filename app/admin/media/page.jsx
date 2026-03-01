@@ -103,7 +103,7 @@ export default function AdminMediaLibrary() {
                 ) : (
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {media.length > 0 ? media.map(item => (
-                            <div key={item.id} className="group bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:border-violet-300 transition-colors flex flex-col">
+                            <div key={item.id} className="group bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:border-primary-300 transition-colors flex flex-col">
                                 <div className="h-40 bg-gray-50 flex items-center justify-center overflow-hidden border-b border-gray-50 relative">
                                     <img src={item.url} alt={item.filename} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                                     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">

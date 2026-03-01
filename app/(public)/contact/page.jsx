@@ -5,8 +5,8 @@ import { notFound } from 'next/navigation'
 export async function generateMetadata() {
     const page = await prisma.page.findUnique({ where: { slug: 'contact' } })
     return {
-        title: page?.title ?? 'Contact Us',
-        description: page?.metaDesc ?? 'Get in touch with Virginia Business Solutions.',
+        title: page?.title || 'Contact | Digital Career Guidance Platform in India',
+        description: page?.metaDesc || 'Get in touch for general queries, feedback, or partnership inquiries related to digital career guidance, skills, and structured learning pathways.',
         alternates: { canonical: '/contact' },
     }
 }
