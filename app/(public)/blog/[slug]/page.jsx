@@ -3,10 +3,13 @@ import Container from '@/components/ui/Container'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Reveal } from '@/components/ui/Reveal'
+import { unstable_noStore as noStore } from 'next/cache'
+
 // In a full production app you'd parse Phase 2's rich text content with a markdown parser like react-markdown.
 // We'll safely render HTML if you store HTML, or we can just render the raw string for this Phase.
 
 export async function generateMetadata({ params }) {
+    noStore()
     const { slug } = await params
     const post = await prisma.post.findUnique({ where: { slug } })
     if (!post) return { title: 'Post Not Found' }
@@ -18,6 +21,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogPostPage({ params }) {
+    noStore()
     const { slug } = await params
     const post = await prisma.post.findUnique({
         where: { slug },

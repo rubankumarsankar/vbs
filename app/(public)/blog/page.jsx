@@ -2,6 +2,7 @@ import { prisma } from '@/lib/db'
 import Container from '@/components/ui/Container'
 import Link from 'next/link'
 import { Reveal, StaggerChildren, Child } from '@/components/ui/Reveal'
+import { unstable_noStore as noStore } from 'next/cache'
 
 export const metadata = {
     title: 'VBS Engineering Blog',
@@ -9,6 +10,7 @@ export const metadata = {
 }
 
 export default async function BlogIndexPage() {
+    noStore()
     const posts = await prisma.post.findMany({
         where: { isPublished: true },
         orderBy: { createdAt: 'desc' },
