@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import { revalidatePath } from 'next/cache'
 
 export async function GET() {
     try {
@@ -54,6 +55,9 @@ export async function PUT(req) {
                 }
             })
         }
+
+        // Bust the public layout cache so Navbar/Footer update immediately
+        revalidatePath('/', 'layout')
 
         return NextResponse.json({ success: true, settings })
     } catch (error) {

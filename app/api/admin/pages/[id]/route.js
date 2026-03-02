@@ -38,6 +38,7 @@ export async function PATCH(request, { params }) {
 
         // Prevent modifying the hardcoded home slug if it exists to avoid breaking the core entry point
         const targetPage = await prisma.page.findUnique({ where: { id: parseInt(paramId) } })
+        if (!targetPage) return NextResponse.json({ error: 'Page not found' }, { status: 404 })
         if (targetPage.slug === 'home' && slug !== 'home') {
              return NextResponse.json({ error: 'Cannot change the slug of the home page' }, { status: 400 })
         }
@@ -80,6 +81,7 @@ export async function DELETE(request, { params }) {
 
         const { id: paramId } = await params
         const page = await prisma.page.findUnique({ where: { id: parseInt(paramId) } })
+        if (!page) return NextResponse.json({ error: 'Page not found' }, { status: 404 })
         if (page.slug === 'home') {
             return NextResponse.json({ error: 'Cannot delete the core home page' }, { status: 400 })
         }

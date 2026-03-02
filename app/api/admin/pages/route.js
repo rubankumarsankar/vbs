@@ -3,6 +3,22 @@ import { prisma } from '@/lib/db'
 import { getAuthSession } from '@/lib/auth'
 import { revalidatePath } from 'next/cache'
 
+export async function GET() {
+    try {
+        const session = await getAuthSession()
+        if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
+        const pages = await prisma.page.findMany({
+            orderBy: { slug: 'asc' },
+            include: { _count: { select: { sections: true } } }
+        })
+        return NextResponse.json(pages)
+    } catch (err) {
+        console.error('[pages GET]', err)
+        return NextResponse.json({ error: 'Server error' }, { status: 500 })
+    }
+}
+
 export async function POST(request) {
     try {
         const session = await getAuthSession()

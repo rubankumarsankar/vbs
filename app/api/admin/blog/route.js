@@ -4,6 +4,9 @@ import { getAuthSession } from '@/lib/auth'
 
 export async function GET() {
     try {
+        const session = await getAuthSession()
+        if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
         const posts = await prisma.post.findMany({
             orderBy: { createdAt: 'desc' },
             include: { author: true, category: true, tags: true }

@@ -8,5 +8,14 @@ export default withAuth({
 })
 
 export const config = {
-  matcher: ['/admin/dashboard/:path*', '/admin/sections/:path*', '/admin/affiliates/:path*'],
+  matcher: [
+    '/admin/dashboard/:path*',
+    '/admin/sections/:path*',
+    '/admin/affiliates/:path*',
+    '/admin/blog/:path*',
+    '/admin/media/:path*',
+    '/admin/users/:path*',
+    '/admin/pages/:path*',
+    '/admin/settings/:path*',
+  ],
 }

@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
 
 const DEFAULT_NAV_LINKS = [
     { label: 'Home', url: '/' },
@@ -200,7 +199,7 @@ export default function AdminSettingsPage() {
                                 </div>
                             ))}
                             {(!data.navLinks || data.navLinks.length === 0) && (
-                                <p className="text-center text-gray-400 text-sm font-medium py-6">No navigation links configured. Click "+ Add Link" to begin.</p>
+                                <p className="text-center text-gray-400 text-sm font-medium py-6">No navigation links configured. Click &ldquo;+ Add Link&rdquo; to begin.</p>
                             )}
                         </div>
                     </div>

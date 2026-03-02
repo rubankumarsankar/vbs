@@ -1,14 +1,12 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
 import { showSuccess, showError } from '@/lib/swal'
 
 export default function AdminMediaLibrary() {
     const [media, setMedia] = useState([])
     const [loading, setLoading] = useState(true)
     const [uploading, setUploading] = useState(false)
-    const [error, setError] = useState('')
 
     const fetchMedia = () => {
         setLoading(true)

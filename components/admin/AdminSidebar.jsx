@@ -24,9 +24,12 @@ const navItems = [
     { label: 'Site Settings', href: '/admin/settings', icon: HiOutlineCog },
 ]
 
-export default function AdminSidebar() {
+export default function AdminSidebar({ user }) {
     const pathname = usePathname()
     const { data: session } = useSession()
+
+    // Prefer the server-provided user prop; fall back to client session
+    const currentUser = user || session?.user
 
     return (
         <aside className="w-72 min-h-screen bg-white border-r border-gray-100 flex flex-col select-none">
@@ -44,15 +47,15 @@ export default function AdminSidebar() {
             </div>
 
             {/* User Badge */}
-            {session?.user && (
+            {currentUser && (
                 <div className="mx-4 mt-4 mb-2 px-4 py-3 bg-gray-50 rounded-xl border border-gray-100">
                     <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-lg bg-linear-to-b from-primary-500 to-primary-700 flex items-center justify-center text-white text-xs font-black uppercase">
-                            {session.user.name?.[0] || session.user.email?.[0] || 'A'}
+                            {currentUser.name?.[0] || currentUser.email?.[0] || 'A'}
                         </div>
                         <div className="flex-1 min-w-0">
-                            <p className="text-gray-900 text-xs font-bold truncate">{session.user.name || 'Admin'}</p>
-                            <p className="text-gray-500 text-[10px] font-semibold truncate">{session.user.email}</p>
+                            <p className="text-gray-900 text-xs font-bold truncate">{currentUser.name || 'Admin'}</p>
+                            <p className="text-gray-500 text-[10px] font-semibold truncate">{currentUser.email}</p>
                         </div>
                     </div>
                 </div>
@@ -81,7 +84,7 @@ export default function AdminSidebar() {
                 })}
 
                 {/* Super Admin Section */}
-                {session?.user?.role === 'SUPER_ADMIN' && (
+                {currentUser?.role === 'SUPER_ADMIN' && (
                     <>
                         <div className="pt-4 pb-2">
                             <p className="text-[10px] font-bold text-gray-600 uppercase tracking-widest px-4">Administration</p>

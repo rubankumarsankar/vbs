@@ -2,7 +2,7 @@
 
 import { signIn } from 'next-auth/react'
 import { useState, Suspense } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { showError } from '@/lib/swal'
 
@@ -10,7 +10,6 @@ function LoginForm() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [loading, setLoading] = useState(false)
-    const router = useRouter()
     const searchParams = useSearchParams()
 
     async function handleSubmit(e) {
@@ -29,7 +28,10 @@ function LoginForm() {
             showError('Invalid email or password')
         } else {
             const callbackUrl = searchParams.get('callbackUrl') || '/admin/dashboard'
-            router.push(callbackUrl)
+            // Full page reload is required so the server-side AdminLayout
+            // re-runs getServerSession() and renders the sidebar.
+            // router.push() would do a client-side nav and skip the server layout.
+            window.location.href = callbackUrl
         }
     }
 
