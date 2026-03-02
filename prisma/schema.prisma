@@ -113,7 +113,7 @@ model SiteSettings {
   contactEmail    String?
   contactPhone    String?
   footerText      String?  @db.Text
-  seoDefaultTitle String   @default("VPS - Digital Career Guidance")
+  seoDefaultTitle String   @default("VBS - Digital Career Guidance")
   seoDefaultDesc  String?  @db.Text
   socialLinks     Json? // Optional JSON mapping for Facebook, Twitter, LinkedIn
   navLinks        Json? // JSON array of {label, url} for navbar

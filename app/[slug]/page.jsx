@@ -9,7 +9,7 @@ export async function generateMetadata({ params }) {
 
     return {
         title: page.title,
-        description: page.metaDesc || 'VPS Digital custom page.',
+        description: page.metaDesc || 'VBS Digital custom page.',
         alternates: { canonical: `/${slug}` },
     }
 }

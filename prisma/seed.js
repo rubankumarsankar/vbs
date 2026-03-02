@@ -9,10 +9,10 @@ async function main() {
   // ─── Admin User ───────────────────────────────────────────────────────────
   const passwordHash = await bcrypt.hash(process.env.ADMIN_PASSWORD || 'Admin@123', 12)
   await prisma.adminUser.upsert({
-    where: { email: process.env.ADMIN_EMAIL || 'admin@vps.com' },
+    where: { email: process.env.ADMIN_EMAIL || 'admin@vbs.com' },
     update: {},
     create: {
-      email: process.env.ADMIN_EMAIL || 'admin@vps.com',
+      email: process.env.ADMIN_EMAIL || 'admin@vbs.com',
       name: 'Admin',
       passwordHash,
       role: 'SUPER_ADMIN',
@@ -28,7 +28,7 @@ async function main() {
       slug: 'home',
       title: 'Home',
       metaDesc:
-        'VPS - helping students, early-career professionals and working adults build job-ready digital skills for the 2026 economy.',
+        'VBS - helping students, early-career professionals and working adults build job-ready digital skills for the 2026 economy.',
     },
   })
   console.log('✅ Page (home) seeded')
@@ -47,7 +47,7 @@ async function main() {
       order: 1,
       isActive: true,
       data: {
-        heading: 'Get Job-Ready with VPS Digital Skills',
+        heading: 'Get Job-Ready with VBS Digital Skills',
         subheading:
           'Practical courses, career guides and expert mentorship - built for students, early-career & working professionals.',
         ctaText: 'Explore Courses',
@@ -89,7 +89,7 @@ async function main() {
       isActive: true,
       data: {
         heading: 'Feeling Confused About Which Skills to Learn?',
-        body: 'The tech landscape changes every year. Finding the right path - without wasting time or money - is harder than ever. Most learners pick the wrong course, learn outdated skills, or never finish what they start. VPS was built to fix that.',
+        body: 'The tech landscape changes every year. Finding the right path - without wasting time or money - is harder than ever. Most learners pick the wrong course, learn outdated skills, or never finish what they start. VBS was built to fix that.',
         tag: 'The Problem',
       },
     },
@@ -98,8 +98,8 @@ async function main() {
       order: 4,
       isActive: true,
       data: {
-        heading: 'The VPS Framework: Learn → Practice → Apply',
-        body: 'Every VPS programme follows a proven 3-step framework. You learn the theory, practice on real projects, and apply your skills to portfolio work that hiring managers actually care about.',
+        heading: 'The VBS Framework: Learn → Practice → Apply',
+        body: 'Every VBS programme follows a proven 3-step framework. You learn the theory, practice on real projects, and apply your skills to portfolio work that hiring managers actually care about.',
         tag: 'Our Framework',
         pillars: [
           { icon: '📚', label: 'Learn - structured, expert-curated content' },
@@ -132,7 +132,7 @@ async function main() {
       data: {
         heading: 'Ready to Start Your Digital Journey?',
         subheading:
-          'Join thousands of learners who have already transformed their careers with VPS.',
+          'Join thousands of learners who have already transformed their careers with VBS.',
         ctaText: 'Get Started Free',
         ctaHref: '/contact',
         secondaryCtaText: 'Browse Courses',

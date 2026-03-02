@@ -48,7 +48,7 @@ function LoginForm() {
                         <div className="w-12 h-12 rounded-2xl bg-linear-to-br from-primary-500 to-primary-700 flex items-center justify-center shadow-lg shadow-primary-500/30 mb-4 animate-float">
                             <span className="text-white font-black text-xl">V</span>
                         </div>
-                        <h1 className="text-gray-900 font-extrabold text-2xl tracking-tight">VPS Admin</h1>
+                        <h1 className="text-gray-900 font-extrabold text-2xl tracking-tight">VBS Admin</h1>
                         <p className="text-gray-500 font-medium text-sm mt-1">Content Management System</p>
                     </div>
 

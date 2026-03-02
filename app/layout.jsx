@@ -5,7 +5,7 @@ import './globals.css'
 
 const jost = Jost({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800', '900'] })
 export const metadata = {
-    title: { default: 'VPS - Job-Ready Digital Skills', template: '%s | VPS' },
+    title: { default: 'VBS - Job-Ready Digital Skills', template: '%s | VBS' },
     description:
         'Practical courses, career guides and expert mentorship for students, early-career and working professionals.',
     metadataBase: new URL('http://localhost:3000'),

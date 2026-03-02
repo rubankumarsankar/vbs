@@ -4,8 +4,8 @@ import Link from 'next/link'
 import { Reveal, StaggerChildren, Child } from '@/components/ui/Reveal'
 
 export const metadata = {
-    title: 'VPS Engineering Blog',
-    description: 'Insights, tutorials, and architectural deep-dives from the VPS engineering team.',
+    title: 'VBS Engineering Blog',
+    description: 'Insights, tutorials, and architectural deep-dives from the VBS engineering team.',
 }
 
 export default async function BlogIndexPage() {

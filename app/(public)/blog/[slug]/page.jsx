@@ -12,8 +12,8 @@ export async function generateMetadata({ params }) {
     if (!post) return { title: 'Post Not Found' }
 
     return {
-        title: `${post.title} | VPS Blog`,
-        description: post.excerpt || 'Read the full article on VPS Digital.',
+        title: `${post.title} | VBS Blog`,
+        description: post.excerpt || 'Read the full article on VBS Digital.',
     }
 }
 

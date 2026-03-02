@@ -37,7 +37,7 @@ export default function AdminSidebar() {
                         <span className="text-white font-black text-lg">V</span>
                     </div>
                     <div>
-                        <h1 className="text-gray-900 font-extrabold text-base tracking-tight">VPS Admin</h1>
+                        <h1 className="text-gray-900 font-extrabold text-base tracking-tight">VBS Admin</h1>
                         <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Control Panel</p>
                     </div>
                 </Link>
