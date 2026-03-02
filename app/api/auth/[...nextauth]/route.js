@@ -14,15 +14,28 @@ export const authOptions = {
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null
 
-        const admin = await prisma.adminUser.findUnique({
-          where: { email: credentials.email },
-        })
-        if (!admin) return null
+        try {
+          const admin = await prisma.adminUser.findUnique({
+            where: { email: credentials.email },
+          })
+          
+          if (!admin) {
+            console.log('Login failed: user not found', credentials.email)
+            return null
+          }
 
-        const valid = await bcrypt.compare(credentials.password, admin.passwordHash)
-        if (!valid) return null
+          const valid = await bcrypt.compare(credentials.password, admin.passwordHash)
+          
+          if (!valid) {
+            console.log('Login failed: invalid password', credentials.email)
+            return null
+          }
 
-        return { id: String(admin.id), name: admin.name, email: admin.email, role: admin.role }
+          return { id: String(admin.id), name: admin.name, email: admin.email, role: admin.role }
+        } catch (error) {
+          console.error("Auth error:", error)
+          return null
+        }
       },
     }),
   ],
