@@ -30,7 +30,7 @@ export const authOptions = {
     signIn: '/admin/login',
   },
   session: { strategy: 'jwt' },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET || "i29s5gjAmhw/rK98XbHRyt155diV0cJVwHZiS3BsB6WI=",
   trustHost: true,
   callbacks: {
     async jwt({ token, user, trigger, session }) {
