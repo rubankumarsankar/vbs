@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 import { getAuthSession } from '@/lib/auth'
+import { revalidatePath } from 'next/cache'
 
 export async function GET(request) {
   try {
@@ -54,7 +55,15 @@ export async function POST(request) {
         isActive: true, // Default to true so they immediately show up
         data,
       },
+      include: { page: true }
     })
+
+    // Revalidate the page so changes show up live instantly
+    if (newSection.page?.slug === 'home') {
+      revalidatePath('/')
+    } else if (newSection.page?.slug) {
+      revalidatePath(`/${newSection.page.slug}`)
+    }
 
     return NextResponse.json(newSection, { status: 201 })
   } catch (err) {

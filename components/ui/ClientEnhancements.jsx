@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
+import { HiChevronUp } from 'react-icons/hi'
 
 export default function ClientEnhancements() {
     const [loading, setLoading] = useState(true)
@@ -62,17 +63,20 @@ export default function ClientEnhancements() {
                 aria-label="Scroll to top"
             >
                 <div className="absolute inset-0 rounded-full bg-primary-50/50 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <span className="text-xl font-black text-gray-400 group-hover:text-primary-600 leading-none pt-1 z-10 transition-colors">^</span>
+                <HiChevronUp className="text-3xl text-gray-400 group-hover:text-primary-600 z-10 transition-colors" />
             </button>
 
             {/* Premium Light Glass Page Loader Overlay */}
             <div
-                className={`fixed inset-0 z-[10000] flex items-center justify-center bg-[#EDF4FF]/70 backdrop-blur-2xl transition-opacity duration-500 ease-in-out pointer-events-none ${loading ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+                className={`fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-[#F8FAFC]/90 backdrop-blur-2xl transition-opacity duration-500 ease-in-out pointer-events-none ${loading ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
             >
-                <div className="relative w-16 h-16 flex items-center justify-center animate-pulse">
-                    <div className="absolute inset-0 border-[4px] border-primary-500/80 rounded-lg skew-x-[-12deg] skew-y-[12deg] animate-[spin_3s_linear_infinite]" />
-                    <span className="font-black text-primary-600 text-3xl z-10 pt-[2px]">V</span>
+                <div className="relative w-16 h-16 flex items-center justify-center mb-6">
+                    <div className="absolute inset-0 border-4 border-primary-100 border-t-primary-500 rounded-full animate-spin" />
+                    <span className="font-black text-primary-600 text-2xl z-10 pt-[2px]">V</span>
                 </div>
+                <h2 className="text-primary-800 font-extrabold tracking-[0.2em] text-sm md:text-base uppercase animate-pulse">
+                    Virginia...
+                </h2>
             </div>
         </>
     )

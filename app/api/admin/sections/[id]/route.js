@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
+import { revalidatePath } from 'next/cache'
 
 export async function PATCH(request, { params }) {
   try {
@@ -17,7 +18,16 @@ export async function PATCH(request, { params }) {
         ...(order !== undefined && { order }),
         ...(data !== undefined && { data }),
       },
+      include: { page: true }
     })
+
+    // Revalidate the page so changes show up live instantly
+    if (updated.page?.slug === 'home') {
+      revalidatePath('/')
+    } else if (updated.page?.slug) {
+      revalidatePath(`/${updated.page.slug}`)
+    }
+
     return NextResponse.json(updated)
   } catch (err) {
     console.error(err)

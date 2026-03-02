@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 import { getAuthSession } from '@/lib/auth'
+import { revalidatePath } from 'next/cache'
 
 export async function GET(request, { params }) {
     try {
@@ -51,6 +52,17 @@ export async function PATCH(request, { params }) {
             }
         })
 
+        // Revalidate cache instantly
+        if (page.slug === 'home') {
+            revalidatePath('/')
+        } else {
+            revalidatePath(`/${page.slug}`)
+            // Revalidate old slug cache if they changed the URL
+            if (targetPage.slug !== slug) {
+                 revalidatePath(`/${targetPage.slug}`)
+            }
+        }
+
         return NextResponse.json(page)
     } catch (err) {
         console.error(err)
@@ -75,6 +87,10 @@ export async function DELETE(request, { params }) {
         await prisma.page.delete({
             where: { id: parseInt(paramId) }
         })
+
+        if (page.slug !== 'home') {
+             revalidatePath(`/${page.slug}`)
+        }
 
         return NextResponse.json({ success: true })
     } catch (err) {

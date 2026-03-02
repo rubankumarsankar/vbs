@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 import { getAuthSession } from '@/lib/auth'
+import { revalidatePath } from 'next/cache'
 
 export async function POST(request) {
     try {
@@ -22,6 +23,10 @@ export async function POST(request) {
                 isPublished: !!isPublished
             }
         })
+
+        if (newPage.slug !== 'home') {
+             revalidatePath(`/${newPage.slug}`)
+        }
 
         return NextResponse.json(newPage, { status: 201 })
     } catch (err) {
