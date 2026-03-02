@@ -19,15 +19,15 @@ export function HomeHero({ data }) {
     return (
         <section className="relative w-full overflow-hidden">
             {/* Dark Hero */}
-            <div className={`relative w-full pt-40 pb-36 px-6 flex flex-col items-center justify-center text-center overflow-hidden z-10 ${hasBgImage ? 'bg-secondary-600' : 'bg-linear-to-br from-secondary-600 via-[#253545] to-[#162030]'}`}>
+            <div className={`relative w-full pt-40 pb-36 px-6 lg:px-10 flex flex-col justify-center overflow-hidden z-10 ${hasBgImage ? 'bg-secondary-900' : 'bg-linear-to-br from-secondary-600 via-[#253545] to-[#162030]'}`}>
 
                 {hasBgImage && (
                     <>
                         <div
-                            className="absolute inset-0 z-0 bg-cover bg-top bg-no-repeat"
+                            className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
                             style={{ backgroundImage: `url(${data.bgImage})` }}
                         />
-                        <div className="absolute inset-0 z-0 bg-secondary-600/70 backdrop-blur-[2px]" />
+                        <div className="absolute inset-0 z-0 bg-linear-to-r from-secondary-900/95 via-secondary-900/50 to-transparent" />
                     </>
                 )}
 
@@ -49,37 +49,39 @@ export function HomeHero({ data }) {
                 <div className="absolute hidden md:flex bottom-[30%] left-[18%] w-12 h-12 bg-white/5 border border-white/10 rounded-xl items-center justify-center animate-float-slow backdrop-blur-sm" style={{ animationDelay: '0.5s' }}><HiOutlineAcademicCap className="text-primary-400 text-xl" /></div>
                 <div className="absolute hidden md:flex bottom-[20%] right-[22%] w-14 h-14 bg-white/5 border border-white/10 rounded-xl items-center justify-center animate-float backdrop-blur-sm" style={{ animationDelay: '1.5s' }}><HiOutlineBriefcase className="text-primary-300 text-2xl" /></div>
 
-                <div className="relative z-20 max-w-4xl mx-auto">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm mb-8">
-                        <span className="w-2 h-2 rounded-full bg-primary-400 animate-pulse-soft" />
-                        <span className="text-primary-300 text-xs font-bold uppercase tracking-wider">Digital Career Guidance</span>
-                    </div>
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-8 leading-[1.1]">
-                        <span className="text-white">{data.heading?.split('|')[0] || data.heading?.replace('|', ' ')}</span>
-                        {data.heading?.includes('|') && (
-                            <>
-                                <br />
-                                <span className="bg-linear-to-r from-primary-300 to-primary-500 bg-clip-text text-transparent">
-                                    {data.heading?.split('|')[1]}
-                                </span>
-                            </>
-                        )}
-                    </h1>
-                    <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto font-medium leading-relaxed">
-                        {data.subheading}
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        {data.ctaText && (
-                            <Link href={data.ctaHref || '#'} className="inline-flex items-center gap-2 px-8 py-3.5 bg-primary-500 hover:bg-primary-600 text-white font-bold text-[15px] rounded-xl shadow-lg shadow-primary-500/25 transition-all hover:-translate-y-0.5 active:scale-95">
-                                {data.ctaText}
-                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                            </Link>
-                        )}
-                        {data.secondaryCtaText && (
-                            <Link href={data.secondaryCtaHref || '#'} className="inline-flex items-center gap-2 px-8 py-3.5 bg-white/5 hover:bg-white/10 text-white border border-white/15 hover:border-white/25 font-bold text-[15px] rounded-xl transition-all backdrop-blur-sm">
-                                {data.secondaryCtaText}
-                            </Link>
-                        )}
+                <div className="relative z-20 max-w-7xl mx-auto w-full text-left">
+                    <div className="max-w-3xl">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
+                            <span className="w-2 h-2 rounded-full bg-primary-400 animate-pulse-soft" />
+                            <span className="text-primary-300 text-xs font-bold uppercase tracking-wider">Digital Career Guidance</span>
+                        </div>
+                        <h1 className="text-4xl md:text-5xl lg:text-[4rem] font-black tracking-tight mb-6 leading-[1.1]">
+                            <span className="text-white">{data.heading?.split('|')[0] || data.heading?.replace('|', ' ')}</span>
+                            {data.heading?.includes('|') && (
+                                <>
+                                    <br />
+                                    <span className="bg-linear-to-r from-primary-300 to-primary-500 bg-clip-text text-transparent">
+                                        {data.heading?.split('|')[1]}
+                                    </span>
+                                </>
+                            )}
+                        </h1>
+                        <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl font-medium leading-relaxed">
+                            {data.subheading}
+                        </p>
+                        <div className="flex flex-col sm:flex-row items-center justify-start gap-4">
+                            {data.ctaText && (
+                                <Link href={data.ctaHref || '#'} className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white font-bold text-[16px] rounded-xl shadow-lg shadow-primary-500/25 transition-all hover:-translate-y-0.5 active:scale-95 w-full sm:w-auto">
+                                    {data.ctaText}
+                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                                </Link>
+                            )}
+                            {data.secondaryCtaText && (
+                                <Link href={data.secondaryCtaHref || '#'} className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/15 hover:border-white/25 font-bold text-[16px] rounded-xl transition-all backdrop-blur-sm w-full sm:w-auto">
+                                    {data.secondaryCtaText}
+                                </Link>
+                            )}
+                        </div>
                     </div>
                 </div>
 
