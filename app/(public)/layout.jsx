@@ -2,11 +2,11 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { prisma } from '@/lib/db'
 
-// Cache this layout for 60s — settings rarely change, and admin PUT revalidates
-export const revalidate = 60
+// Render on-demand per request — prevents build-time DB connection storm
+// (MySQL host only allows 5 connections; 30 pages pre-rendering = crash)
+export const dynamic = 'force-dynamic'
 
 export default async function PublicLayout({ children }) {
-    // Fetch global site settings (cached via revalidate above)
     const siteSettings = await prisma.siteSettings.findFirst()
 
     return (
