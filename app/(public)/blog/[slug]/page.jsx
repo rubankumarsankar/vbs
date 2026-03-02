@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/db'
+import { prisma, queryWithRetry } from '@/lib/db'
 import Container from '@/components/ui/Container'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -9,7 +9,7 @@ import { Reveal } from '@/components/ui/Reveal'
 
 export async function generateMetadata({ params }) {
     const { slug } = await params
-    const post = await prisma.post.findUnique({ where: { slug } })
+    const post = await queryWithRetry(() => prisma.post.findUnique({ where: { slug } }))
     if (!post) return { title: 'Post Not Found' }
 
     return {
@@ -20,14 +20,16 @@ export async function generateMetadata({ params }) {
 
 export default async function BlogPostPage({ params }) {
     const { slug } = await params
-    const post = await prisma.post.findUnique({
-        where: { slug },
-        include: {
-            author: { select: { name: true, role: true } },
-            category: true,
-            tags: true,
-        },
-    })
+    const post = await queryWithRetry(() =>
+        prisma.post.findUnique({
+            where: { slug },
+            include: {
+                author: { select: { name: true, role: true } },
+                category: true,
+                tags: true,
+            },
+        })
+    )
 
     if (!post || !post.isPublished) {
         notFound()

@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/db'
+import { prisma, queryWithRetry } from '@/lib/db'
 import Container from '@/components/ui/Container'
 import Link from 'next/link'
 import { Reveal, StaggerChildren, Child } from '@/components/ui/Reveal'
@@ -9,15 +9,17 @@ export const metadata = {
 }
 
 export default async function BlogIndexPage() {
-    const posts = await prisma.post.findMany({
-        where: { isPublished: true },
-        orderBy: { createdAt: 'desc' },
-        include: {
-            author: { select: { name: true } },
-            category: true,
-            tags: true,
-        },
-    })
+    const posts = await queryWithRetry(() =>
+        prisma.post.findMany({
+            where: { isPublished: true },
+            orderBy: { createdAt: 'desc' },
+            include: {
+                author: { select: { name: true } },
+                category: true,
+                tags: true,
+            },
+        })
+    )
 
     return (
         <div className="min-h-screen bg-[#F4F6F9]">
