@@ -43,6 +43,15 @@ export default function SectionFormBuilder({ section, onSave, onCancel }) {
                 </div>
                 <p className="text-[11px] font-medium text-gray-400 mt-2 ml-1">Leave blank for default clean white background. If provided, text will automatically switch to overlap mode.</p>
             </div>
+            <div className="pt-4 border-t border-gray-100">
+                <label className="block text-xs font-bold text-gray-500 mb-1.5 ml-1">Content Alignment</label>
+                <select value={data.contentAlign || 'center'} onChange={e => setData({ ...data, contentAlign: e.target.value })} className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 text-sm font-medium text-gray-900 transition-all shadow-sm">
+                    <option value="left">Left Aligned</option>
+                    <option value="center">Center Aligned</option>
+                    <option value="right">Right Aligned</option>
+                </select>
+                <p className="text-[11px] font-medium text-gray-400 mt-2 ml-1">Controls how the text and buttons are horizontally positioned inside the banner block.</p>
+            </div>
         </div>
     )
 

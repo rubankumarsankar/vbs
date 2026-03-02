@@ -16,6 +16,15 @@ const iconMap = {
 }
 
 export function CareerHero({ data }) {
+    const align = data.contentAlign || 'center';
+
+    const containerAlignClass =
+        align === 'left' ? 'text-left items-start' :
+            align === 'right' ? 'text-right items-end' :
+                'text-center items-center';
+
+    const maxWClass = align === 'center' ? 'max-w-4xl mx-auto' : 'max-w-3xl';
+
     return (
         <section className="relative bg-linear-to-b from-secondary-600 via-[#253545] to-[#162030] overflow-hidden">
             <div className="absolute inset-0">
@@ -25,28 +34,30 @@ export function CareerHero({ data }) {
             </div>
             <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
-            <div className="relative z-10 max-w-4xl mx-auto px-6 pt-40 pb-32 md:pt-48 md:pb-40 text-center">
-                <p className="text-primary-400 text-xs font-bold uppercase tracking-[0.2em] mb-4">{data.tag || 'Virginia Business Solutions'}</p>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6">
-                    <span className="text-white">{data.heading?.split('|')[0] || 'Understand Where Digital Skills'}</span><br />
-                    <span className="bg-linear-to-r from-primary-300 to-primary-500 bg-clip-text text-transparent">
-                        {data.heading?.split('|')[1] || 'Can Take You'}
-                    </span>
-                </h1>
-                <p className="text-lg md:text-xl text-gray-400 font-medium max-w-2xl mx-auto leading-relaxed">
-                    {data.subheading}
-                </p>
-                <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                    {data.ctaText && (
-                        <a href={data.ctaHref || '#'} className="px-8 py-3.5 bg-primary-500 hover:bg-primary-600 text-white font-bold text-sm rounded-xl shadow-lg shadow-primary-500/25 hover:-translate-y-0.5 transition-all">
-                            {data.ctaText}
-                        </a>
-                    )}
-                    {data.secondaryCtaText && (
-                        <Link href={data.secondaryCtaHref || '#'} className="px-8 py-3.5 bg-white/5 text-white border border-white/15 hover:bg-white/10 hover:border-white/25 font-bold text-sm rounded-xl backdrop-blur-sm transition-all">
-                            {data.secondaryCtaText}
-                        </Link>
-                    )}
+            <div className={`relative z-10 w-full px-6 pt-40 pb-32 md:pt-48 md:pb-40 flex flex-col ${containerAlignClass}`}>
+                <div className={maxWClass}>
+                    <p className="text-primary-400 text-xs font-bold uppercase tracking-[0.2em] mb-4">{data.tag || 'Virginia Business Solutions'}</p>
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6">
+                        <span className="text-white">{data.heading?.split('|')[0] || 'Understand Where Digital Skills'}</span><br />
+                        <span className="bg-linear-to-r from-primary-300 to-primary-500 bg-clip-text text-transparent">
+                            {data.heading?.split('|')[1] || 'Can Take You'}
+                        </span>
+                    </h1>
+                    <p className={`text-lg md:text-xl text-gray-400 font-medium max-w-2xl leading-relaxed ${align === 'center' ? 'mx-auto' : ''}`}>
+                        {data.subheading}
+                    </p>
+                    <div className={`mt-8 flex flex-col sm:flex-row items-center gap-4 ${align === 'left' ? 'justify-start' : align === 'right' ? 'justify-end' : 'justify-center'}`}>
+                        {data.ctaText && (
+                            <a href={data.ctaHref || '#'} className="px-8 py-3.5 bg-primary-500 hover:bg-primary-600 text-white font-bold text-sm rounded-xl shadow-lg shadow-primary-500/25 hover:-translate-y-0.5 transition-all">
+                                {data.ctaText}
+                            </a>
+                        )}
+                        {data.secondaryCtaText && (
+                            <Link href={data.secondaryCtaHref || '#'} className="px-8 py-3.5 bg-white/5 text-white border border-white/15 hover:bg-white/10 hover:border-white/25 font-bold text-sm rounded-xl backdrop-blur-sm transition-all">
+                                {data.secondaryCtaText}
+                            </Link>
+                        )}
+                    </div>
                 </div>
             </div>
             <span className="sr-only">Digital career paths and skill growth roadmap</span>

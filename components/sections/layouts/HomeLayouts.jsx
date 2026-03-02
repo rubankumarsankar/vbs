@@ -15,6 +15,20 @@ const iconMap = {
 
 export function HomeHero({ data }) {
     const hasBgImage = !!data.bgImage;
+    const align = data.contentAlign || 'center';
+
+    // Alignment classes mapping
+    const containerAlignClass =
+        align === 'left' ? 'text-left items-start' :
+            align === 'right' ? 'text-right items-end' :
+                'text-center items-center';
+
+    const btnAlignClass =
+        align === 'left' ? 'justify-start' :
+            align === 'right' ? 'justify-end' :
+                'justify-center';
+
+    const maxWClass = align === 'center' ? 'max-w-4xl mx-auto text-center' : 'max-w-3xl';
 
     return (
         <section className="relative w-full overflow-hidden">
@@ -27,7 +41,7 @@ export function HomeHero({ data }) {
                             className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
                             style={{ backgroundImage: `url(${data.bgImage})` }}
                         />
-                        <div className="absolute inset-0 z-0 bg-linear-to-r from-secondary-900/95 via-secondary-900/50 to-transparent" />
+                        <div className={`absolute inset-0 z-0 ${align === 'right' ? 'bg-linear-to-l' : 'bg-linear-to-r'} from-secondary-900/95 via-secondary-900/50 to-transparent`} />
                     </>
                 )}
 
@@ -49,8 +63,8 @@ export function HomeHero({ data }) {
                 <div className="absolute hidden md:flex bottom-[30%] left-[18%] w-12 h-12 bg-white/5 border border-white/10 rounded-xl items-center justify-center animate-float-slow backdrop-blur-sm" style={{ animationDelay: '0.5s' }}><HiOutlineAcademicCap className="text-primary-400 text-xl" /></div>
                 <div className="absolute hidden md:flex bottom-[20%] right-[22%] w-14 h-14 bg-white/5 border border-white/10 rounded-xl items-center justify-center animate-float backdrop-blur-sm" style={{ animationDelay: '1.5s' }}><HiOutlineBriefcase className="text-primary-300 text-2xl" /></div>
 
-                <div className="relative z-20 max-w-7xl mx-auto w-full text-left">
-                    <div className="max-w-3xl">
+                <div className={`relative z-20 max-w-7xl mx-auto w-full flex flex-col ${containerAlignClass}`}>
+                    <div className={maxWClass}>
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
                             <span className="w-2 h-2 rounded-full bg-primary-400 animate-pulse-soft" />
                             <span className="text-primary-300 text-xs font-bold uppercase tracking-wider">Digital Career Guidance</span>
@@ -66,10 +80,10 @@ export function HomeHero({ data }) {
                                 </>
                             )}
                         </h1>
-                        <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl font-medium leading-relaxed">
+                        <p className={`text-lg md:text-xl text-gray-300 mb-10 font-medium leading-relaxed ${align === 'center' ? 'mx-auto' : ''}`}>
                             {data.subheading}
                         </p>
-                        <div className="flex flex-col sm:flex-row items-center justify-start gap-4">
+                        <div className={`flex flex-col sm:flex-row items-center gap-4 ${btnAlignClass}`}>
                             {data.ctaText && (
                                 <Link href={data.ctaHref || '#'} className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white font-bold text-[16px] rounded-xl shadow-lg shadow-primary-500/25 transition-all hover:-translate-y-0.5 active:scale-95 w-full sm:w-auto">
                                     {data.ctaText}
