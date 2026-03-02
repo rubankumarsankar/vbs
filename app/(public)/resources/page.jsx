@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/db'
+import { prisma, queryWithRetry } from '@/lib/db'
 import Link from 'next/link'
 import { HiOutlineExternalLink, HiOutlineStar } from 'react-icons/hi'
 
@@ -11,10 +11,12 @@ export async function generateMetadata() {
 }
 
 export default async function ResourcesPage() {
-    const links = await prisma.affiliateLink.findMany({
-        where: { isActive: true },
-        orderBy: [{ isFeatured: 'desc' }, { createdAt: 'desc' }],
-    })
+    const links = await queryWithRetry(() =>
+        prisma.affiliateLink.findMany({
+            where: { isActive: true },
+            orderBy: [{ isFeatured: 'desc' }, { createdAt: 'desc' }],
+        })
+    )
 
     const featured = links.filter(l => l.isFeatured)
     const regular = links.filter(l => !l.isFeatured)

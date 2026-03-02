@@ -1,17 +1,19 @@
 import { requireEditor } from '@/lib/auth'
-import { prisma } from '@/lib/db'
+import { prisma, queryWithRetry } from '@/lib/db'
 import Link from 'next/link'
 
 export default async function AdminBlogDashboard() {
     await requireEditor()
 
-    const posts = await prisma.post.findMany({
-        orderBy: { createdAt: 'desc' },
-        include: {
-            author: { select: { name: true } },
-            category: { select: { name: true } }
-        }
-    })
+    const posts = await queryWithRetry(() =>
+        prisma.post.findMany({
+            orderBy: { createdAt: 'desc' },
+            include: {
+                author: { select: { name: true } },
+                category: { select: { name: true } }
+            }
+        })
+    )
 
     return (
         <div className="w-full">

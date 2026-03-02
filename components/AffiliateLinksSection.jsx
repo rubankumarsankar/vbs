@@ -1,4 +1,4 @@
-import { prisma } from '@/lib/db'
+import { prisma, queryWithRetry } from '@/lib/db'
 import { HiOutlineExternalLink, HiOutlineStar } from 'react-icons/hi'
 
 /**
@@ -9,11 +9,13 @@ export default async function AffiliateLinksSection({ category, limit, title = '
     const where = { isActive: true }
     if (category) where.category = category
 
-    const links = await prisma.affiliateLink.findMany({
-        where,
-        orderBy: [{ isFeatured: 'desc' }, { createdAt: 'desc' }],
-        take: limit || undefined,
-    })
+    const links = await queryWithRetry(() =>
+        prisma.affiliateLink.findMany({
+            where,
+            orderBy: [{ isFeatured: 'desc' }, { createdAt: 'desc' }],
+            take: limit || undefined,
+        })
+    )
 
     if (links.length === 0) return null
 

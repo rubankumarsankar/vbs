@@ -1,18 +1,20 @@
 import { requireEditor } from '@/lib/auth'
-import { prisma } from '@/lib/db'
+import { prisma, queryWithRetry } from '@/lib/db'
 import Link from 'next/link'
 
 export default async function AdminPagesIndex() {
     await requireEditor()
 
-    const pages = await prisma.page.findMany({
-        orderBy: { slug: 'asc' },
-        include: {
-            _count: {
-                select: { sections: true }
+    const pages = await queryWithRetry(() =>
+        prisma.page.findMany({
+            orderBy: { slug: 'asc' },
+            include: {
+                _count: {
+                    select: { sections: true }
+                }
             }
-        }
-    })
+        })
+    )
 
     return (
         <div className="w-full">

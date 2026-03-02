@@ -1,10 +1,10 @@
 import SectionRenderer from '@/components/SectionRenderer'
 import AffiliateLinksSection from '@/components/AffiliateLinksSection'
-import { prisma } from '@/lib/db'
+import { prisma, queryWithRetry } from '@/lib/db'
 import { notFound } from 'next/navigation'
 
 export async function generateMetadata() {
-    const page = await prisma.page.findUnique({ where: { slug: 'digital-skills' } })
+    const page = await queryWithRetry(() => prisma.page.findUnique({ where: { slug: 'digital-skills' } }))
     return {
         title: page?.title || 'Digital Skills Guide',
         description: page?.metaDesc || 'Digital skills guide for students and professionals in India.',
@@ -13,15 +13,17 @@ export async function generateMetadata() {
 }
 
 export default async function DigitalSkillsPage() {
-    const page = await prisma.page.findUnique({
-        where: { slug: 'digital-skills' },
-        include: {
-            sections: {
-                where: { isActive: true },
-                orderBy: { order: 'asc' },
+    const page = await queryWithRetry(() =>
+        prisma.page.findUnique({
+            where: { slug: 'digital-skills' },
+            include: {
+                sections: {
+                    where: { isActive: true },
+                    orderBy: { order: 'asc' },
+                },
             },
-        },
-    })
+        })
+    )
 
     if (!page) notFound()
 

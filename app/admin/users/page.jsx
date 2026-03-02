@@ -1,15 +1,17 @@
 import { requireSuperAdmin } from '@/lib/auth'
-import { prisma } from '@/lib/db'
+import { prisma, queryWithRetry } from '@/lib/db'
 import Link from 'next/link'
 
 export default async function AdminUsersPage() {
     // Only SUPER_ADMIN can load this page
     await requireSuperAdmin()
 
-    const users = await prisma.adminUser.findMany({
-        orderBy: { createdAt: 'desc' },
-        select: { id: true, name: true, email: true, role: true, createdAt: true }
-    })
+    const users = await queryWithRetry(() =>
+        prisma.adminUser.findMany({
+            orderBy: { createdAt: 'desc' },
+            select: { id: true, name: true, email: true, role: true, createdAt: true }
+        })
+    )
 
     return (
         <div className="w-full">

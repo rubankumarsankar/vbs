@@ -1,6 +1,6 @@
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
-import { prisma } from '@/lib/db'
+import { prisma, queryWithRetry } from '@/lib/db'
 import Link from 'next/link'
 import {
     HiOutlineDocumentText,
@@ -16,14 +16,16 @@ import {
 export default async function AdminDashboard() {
     const session = await getServerSession(authOptions)
 
-    const [sectionCount, contactCount, pageCount, blogCount, affiliateCount, recentContacts] = await Promise.all([
-        prisma.section.count(),
-        prisma.contact.count(),
-        prisma.page.count(),
-        prisma.post.count(),
-        prisma.affiliateLink.count(),
-        prisma.contact.findMany({ orderBy: { createdAt: 'desc' }, take: 5 }),
-    ])
+    const [sectionCount, contactCount, pageCount, blogCount, affiliateCount, recentContacts] = await queryWithRetry(() =>
+        Promise.all([
+            prisma.section.count(),
+            prisma.contact.count(),
+            prisma.page.count(),
+            prisma.post.count(),
+            prisma.affiliateLink.count(),
+            prisma.contact.findMany({ orderBy: { createdAt: 'desc' }, take: 5 }),
+        ])
+    )
 
     const stats = [
         { label: 'CMS Pages', value: pageCount, icon: HiOutlineDocumentText, color: 'from-primary-500 to-primary-700', shadow: 'shadow-primary-500/20' },
