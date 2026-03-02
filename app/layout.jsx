@@ -4,11 +4,18 @@ import ClientEnhancements from '@/components/ui/ClientEnhancements'
 import './globals.css'
 
 const jost = Jost({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800', '900'] })
+
+const getBaseUrl = () => {
+    if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL
+    if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`
+    return 'http://localhost:3000'
+}
+
 export const metadata = {
     title: { default: 'VBS - Job-Ready Digital Skills', template: '%s | VBS' },
     description:
         'Practical courses, career guides and expert mentorship for students, early-career and working professionals.',
-    metadataBase: new URL('http://localhost:3000'),
+    metadataBase: new URL(getBaseUrl()),
 }
 export default function RootLayout({ children }) {
     return (
