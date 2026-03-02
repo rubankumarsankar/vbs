@@ -1,16 +1,17 @@
 'use client'
 
 import { signIn } from 'next-auth/react'
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, Suspense } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { showError } from '@/lib/swal'
 
-export default function AdminLoginPage() {
+function LoginForm() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [loading, setLoading] = useState(false)
     const router = useRouter()
+    const searchParams = useSearchParams()
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -27,7 +28,8 @@ export default function AdminLoginPage() {
         if (result?.error) {
             showError('Invalid email or password')
         } else {
-            router.push('/admin/dashboard')
+            const callbackUrl = searchParams.get('callbackUrl') || '/admin/dashboard'
+            router.push(callbackUrl)
         }
     }
 
@@ -91,5 +93,13 @@ export default function AdminLoginPage() {
                 </div>
             </div>
         </div>
+    )
+}
+
+export default function AdminLoginPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen bg-[#F4F6F9] flex items-center justify-center">Loading...</div>}>
+            <LoginForm />
+        </Suspense>
     )
 }

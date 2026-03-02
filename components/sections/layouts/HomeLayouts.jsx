@@ -14,18 +14,34 @@ const iconMap = {
 }
 
 export function HomeHero({ data }) {
+    const hasBgImage = !!data.bgImage;
+
     return (
         <section className="relative w-full overflow-hidden">
             {/* Dark Hero */}
-            <div className="relative bg-linear-to-br from-secondary-600 via-[#253545] to-[#162030] w-full pt-40 pb-36 px-6 flex flex-col items-center justify-center text-center overflow-hidden z-10">
+            <div className={`relative w-full pt-40 pb-36 px-6 flex flex-col items-center justify-center text-center overflow-hidden z-10 ${hasBgImage ? 'bg-secondary-600' : 'bg-linear-to-br from-secondary-600 via-[#253545] to-[#162030]'}`}>
 
-                {/* Teal glow orbs */}
-                <div className="absolute top-[-10%] right-[-5%] w-[50%] h-[50%] bg-primary-500/8 rounded-full blur-[100px] pointer-events-none" />
-                <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary-400/6 rounded-full blur-[80px] pointer-events-none" />
-                <div className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[600px] h-[600px] bg-primary-500/4 rounded-full blur-[120px] pointer-events-none" />
+                {hasBgImage && (
+                    <>
+                        <div
+                            className="absolute inset-0 z-0 bg-cover bg-top bg-no-repeat"
+                            style={{ backgroundImage: `url(${data.bgImage})` }}
+                        />
+                        <div className="absolute inset-0 z-0 bg-secondary-600/70 backdrop-blur-[2px]" />
+                    </>
+                )}
 
-                {/* Grid pattern */}
-                <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+                {!hasBgImage && (
+                    <>
+                        {/* Teal glow orbs */}
+                        <div className="absolute top-[-10%] right-[-5%] w-[50%] h-[50%] bg-primary-500/8 rounded-full blur-[100px] pointer-events-none" />
+                        <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary-400/6 rounded-full blur-[80px] pointer-events-none" />
+                        <div className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[600px] h-[600px] bg-primary-500/4 rounded-full blur-[120px] pointer-events-none" />
+
+                        {/* Grid pattern */}
+                        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+                    </>
+                )}
 
                 {/* Floating icons */}
                 <div className="absolute hidden lg:flex top-[25%] left-[10%] w-14 h-14 bg-white/5 border border-white/10 rounded-xl items-center justify-center animate-float backdrop-blur-sm"><HiOutlineTrendingUp className="text-primary-400 text-2xl" /></div>
