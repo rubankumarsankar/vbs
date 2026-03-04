@@ -1,5 +1,10 @@
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import SearchPalette from '@/components/ui/SearchPalette'
+import Breadcrumbs from '@/components/ui/Breadcrumbs'
+import JsonLd from '@/components/ui/JsonLd'
+import NewsletterCTA from '@/components/ui/NewsletterCTA'
+import PageTransition from '@/components/ui/PageTransition'
 import { prisma, queryWithRetry } from '@/lib/db'
 
 // Render on-demand per request — prevents build-time DB connection storm
@@ -17,8 +22,18 @@ export default async function PublicLayout({ children }) {
 
     return (
         <>
+            <JsonLd type="Organization" data={{
+                email: siteSettings?.contactEmail,
+                socialLinks: siteSettings?.socialLinks ? Object.values(siteSettings.socialLinks) : [],
+            }} />
+            <JsonLd type="WebSite" />
             <Navbar settings={siteSettings} />
-            <main>{children}</main>
+            <SearchPalette />
+            <Breadcrumbs />
+            <PageTransition>
+                <main>{children}</main>
+            </PageTransition>
+            <NewsletterCTA />
             <Footer settings={siteSettings} />
         </>
     )

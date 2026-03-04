@@ -11,6 +11,12 @@ const footerLinks = {
         { label: 'What does this lead to', href: '/career-guides' },
         { label: 'Contact', href: '/contact' },
     ],
+    'Tools': [
+        { label: 'Career Roadmap', href: '/career-roadmap' },
+        { label: 'Skill Quiz', href: '/skill-quiz' },
+        { label: 'Resources', href: '/resources' },
+        { label: 'Blog', href: '/blog' },
+    ],
     'Programs': [
         { label: 'AI & Data Science', href: '/courses-certifications' },
         { label: 'Digital Marketing', href: '/courses-certifications' },

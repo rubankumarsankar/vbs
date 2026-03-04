@@ -3,6 +3,9 @@ import Container from '@/components/ui/Container'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Reveal } from '@/components/ui/Reveal'
+import ShareButtons from '@/components/ui/ShareButtons'
+import RelatedPosts from '@/components/ui/RelatedPosts'
+import JsonLd from '@/components/ui/JsonLd'
 
 // In a full production app you'd parse Phase 2's rich text content with a markdown parser like react-markdown.
 // We'll safely render HTML if you store HTML, or we can just render the raw string for this Phase.
@@ -41,6 +44,17 @@ export default async function BlogPostPage({ params }) {
 
     return (
         <div className="min-h-screen bg-[#F4F6F9]">
+            {/* Article JSON-LD */}
+            <JsonLd type="Article" data={{
+                title: post.title,
+                description: post.excerpt || '',
+                image: post.featuredImg || '',
+                publishedAt: post.createdAt.toISOString(),
+                updatedAt: post.updatedAt.toISOString(),
+                authorName: post.author.name,
+                url: `/blog/${post.slug}`,
+            }} />
+
             {/* Article Header */}
             <section className="bg-white pt-40 pb-20 border-b border-gray-100 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary-500/10 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none" />
@@ -116,9 +130,17 @@ export default async function BlogPostPage({ params }) {
                                 ))}
                             </div>
                         )}
+
+                        {/* Share Buttons */}
+                        <div className="mt-10 pt-8 border-t border-gray-100">
+                            <ShareButtons title={post.title} url={`/blog/${post.slug}`} />
+                        </div>
                     </Reveal>
                 </Container>
             </section>
+
+            {/* Related Posts */}
+            <RelatedPosts currentSlug={post.slug} categoryId={post.categoryId} />
         </div>
     )
 }

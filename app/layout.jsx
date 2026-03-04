@@ -16,6 +16,19 @@ export const metadata = {
     description:
         'Practical courses, career guides and expert mentorship for students, early-career and working professionals.',
     metadataBase: new URL(getBaseUrl()),
+    manifest: '/manifest.json',
+    appleWebApp: {
+        capable: true,
+        statusBarStyle: 'default',
+        title: 'VBS',
+    },
+}
+
+export const viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    themeColor: '#4873AE',
 }
 export default function RootLayout({ children }) {
     return (
