@@ -6,9 +6,7 @@ import { Reveal } from '@/components/ui/Reveal'
 import ShareButtons from '@/components/ui/ShareButtons'
 import RelatedPosts from '@/components/ui/RelatedPosts'
 import JsonLd from '@/components/ui/JsonLd'
-
-// In a full production app you'd parse Phase 2's rich text content with a markdown parser like react-markdown.
-// We'll safely render HTML if you store HTML, or we can just render the raw string for this Phase.
+import ReactMarkdown from 'react-markdown'
 
 export async function generateMetadata({ params }) {
     const { slug } = await params
@@ -112,11 +110,8 @@ export default async function BlogPostPage({ params }) {
                 <Container className="max-w-3xl">
                     <Reveal delay={post.featuredImg ? 0.3 : 0.2}>
                         {/* We use prose-lg for gorgeous typography inside the article */}
-                        <article className="prose prose-lg prose-neutral prose-headings:font-extrabold prose-headings:tracking-tight prose-p:text-gray-600 prose-p:leading-relaxed max-w-none">
-                            {/* In Phase 2 we map newline characters to breaks for simple text. In a final prod this would use react-markdown */}
-                            {post.content.split('\n').map((paragraph, idx) => (
-                                paragraph.trim() !== '' ? <p key={idx}>{paragraph}</p> : <br key={idx} />
-                            ))}
+                        <article className="prose prose-lg prose-neutral prose-headings:font-extrabold prose-headings:tracking-tight prose-p:text-gray-600 prose-img:rounded-2xl prose-img:shadow-xl prose-p:leading-relaxed max-w-none">
+                            <ReactMarkdown>{post.content}</ReactMarkdown>
                         </article>
 
                         {/* Tags */}

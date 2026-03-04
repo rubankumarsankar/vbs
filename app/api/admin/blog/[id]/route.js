@@ -8,7 +8,7 @@ export async function PATCH(request, { params }) {
         if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
         const body = await request.json()
-        const { title, slug, content, excerpt, featuredImg, isPublished, categoryId } = body
+        const { title, slug, content, excerpt, featuredImg, isPublished, categoryId, authorId } = body
 
         if (!title || !slug || !content) {
             return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
@@ -25,6 +25,7 @@ export async function PATCH(request, { params }) {
                 excerpt,
                 featuredImg,
                 isPublished: !!isPublished,
+                authorId: authorId ? parseInt(authorId) : undefined,
                 categoryId: categoryId ? parseInt(categoryId) : null
             }
         })

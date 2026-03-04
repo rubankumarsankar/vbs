@@ -13,6 +13,7 @@ import {
     HiOutlineUserGroup,
     HiOutlineLogout,
     HiOutlineExternalLink,
+    HiOutlineMail,
 } from 'react-icons/hi'
 
 const navItems = [
@@ -20,6 +21,7 @@ const navItems = [
     { label: 'CMS Pages', href: '/admin/pages', icon: HiOutlineDocumentText },
     { label: 'Media Library', href: '/admin/media', icon: HiOutlinePhotograph },
     { label: 'Blog Engine', href: '/admin/blog', icon: HiOutlinePencilAlt },
+    { label: 'Enquiries', href: '/admin/enquiries', icon: HiOutlineMail },
     { label: 'Affiliate Links', href: '/admin/affiliates', icon: HiOutlineLink },
     { label: 'Site Settings', href: '/admin/settings', icon: HiOutlineCog },
 ]

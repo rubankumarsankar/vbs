@@ -73,7 +73,7 @@ export function CareerIntro({ data }) {
         <section className="py-24 px-6 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
                 <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight mb-8 leading-tight">{data.heading}</h2>
-                <div className="text-gray-600 font-medium leading-relaxed space-y-6 text-lg md:text-xl" dangerouslySetInnerHTML={{ __html: data.body }} />
+                {data.body && <div className="text-gray-600 font-medium leading-relaxed space-y-6 text-lg md:text-xl" dangerouslySetInnerHTML={{ __html: data.body }} />}
             </div>
         </section>
     )
@@ -90,7 +90,7 @@ export function CareerWhyClarity({ data }) {
                             <HiOutlineLightBulb className="text-3xl" />
                         </div>
                         <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight mb-6">{data.leftHeading}</h2>
-                        <div className="space-y-4 text-gray-600 font-medium leading-relaxed text-lg" dangerouslySetInnerHTML={{ __html: data.leftBody }} />
+                        {data.leftBody && <div className="space-y-4 text-gray-600 font-medium leading-relaxed text-lg" dangerouslySetInnerHTML={{ __html: data.leftBody }} />}
                     </div>
 
                     {/* Translation */}
@@ -100,7 +100,7 @@ export function CareerWhyClarity({ data }) {
                             <HiOutlineViewGridAdd className="text-3xl" />
                         </div>
                         <h2 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight mb-6 relative z-10">{data.rightHeading}</h2>
-                        <div className="space-y-4 text-gray-400 font-medium leading-relaxed relative z-10 text-lg" dangerouslySetInnerHTML={{ __html: data.rightBody }} />
+                        {data.rightBody && <div className="space-y-4 text-gray-400 font-medium leading-relaxed relative z-10 text-lg" dangerouslySetInnerHTML={{ __html: data.rightBody }} />}
                     </div>
                 </div>
             </div>
@@ -179,7 +179,7 @@ export function CareerGrowth({ data }) {
                         <p className="inline-block px-3 py-1 bg-primary-50 border border-primary-100 text-primary-600 rounded-full text-xs font-bold uppercase tracking-widest mb-4">{data.tag || 'Economics of Value'}</p>
                         <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight mb-8 leading-tight">{data.heading}</h2>
 
-                        <div className="space-y-4 text-gray-600 font-medium leading-relaxed text-lg mb-10" dangerouslySetInnerHTML={{ __html: data.body }} />
+                        {data.body && <div className="space-y-4 text-gray-600 font-medium leading-relaxed text-lg mb-10" dangerouslySetInnerHTML={{ __html: data.body }} />}
 
                         <div className="bg-white/80 backdrop-blur-xl border border-gray-100 rounded-3xl p-8 space-y-5 shadow-[0_4px_20px_rgb(0,0,0,0.03)]">
                             {data.checklist?.map((item, i) => (
@@ -232,7 +232,7 @@ export function CareerAIAndMistakes({ data }) {
                             <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 tracking-tight leading-tight">{data.leftHeading}</h2>
                         </div>
 
-                        <div className="space-y-6 text-gray-600 font-medium leading-relaxed mb-10 text-lg" dangerouslySetInnerHTML={{ __html: data.leftBody }} />
+                        {data.leftBody && <div className="space-y-6 text-gray-600 font-medium leading-relaxed mb-10 text-lg" dangerouslySetInnerHTML={{ __html: data.leftBody }} />}
 
                         <div className="bg-white/80 backdrop-blur-xl border border-gray-100 rounded-3xl p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:border-primary-200 hover:shadow-[0_10px_40px_rgba(72,115,174,0.08)] transition-all duration-500 hover:-translate-y-1.5">
                             <p className="text-gray-900 font-bold mb-6 text-xl">{data.leftListTitle}</p>

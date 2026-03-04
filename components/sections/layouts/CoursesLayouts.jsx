@@ -58,7 +58,7 @@ export function CoursesIntro({ data }) {
     return (
         <section className="max-w-3xl mx-auto px-6 py-16 md:py-24 text-center relative z-10">
             <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 tracking-tight mb-6">{data.heading}</h2>
-            <div className="space-y-4 text-gray-600 font-medium leading-relaxed text-lg" dangerouslySetInnerHTML={{ __html: data.body }} />
+            {data.body && <div className="space-y-4 text-gray-600 font-medium leading-relaxed text-lg" dangerouslySetInnerHTML={{ __html: data.body }} />}
         </section>
     )
 }
@@ -71,7 +71,7 @@ export function CoursesStructure({ data }) {
                     <div className="md:w-1/3 pt-2">
                         <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight leading-snug">{data.heading}</h2>
                     </div>
-                    <div className="md:w-2/3 space-y-4 text-gray-600 font-medium leading-relaxed bg-white/80 backdrop-blur-xl border border-gray-100 p-8 md:p-10 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.03)]" dangerouslySetInnerHTML={{ __html: data.body }} />
+                    {data.body && <div className="md:w-2/3 space-y-4 text-gray-600 font-medium leading-relaxed bg-white/80 backdrop-blur-xl border border-gray-100 p-8 md:p-10 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.03)]" dangerouslySetInnerHTML={{ __html: data.body }} />}
                 </div>
             </div>
         </section>
@@ -156,7 +156,7 @@ export function CoursesFreePaid({ data }) {
                     <div>
                         <p className="inline-block px-3 py-1 bg-primary-50 border border-primary-100 text-primary-600 rounded-full text-xs font-bold uppercase tracking-widest mb-4">{data.tag}</p>
                         <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight mb-6 leading-tight">{data.heading}</h2>
-                        <div className="text-gray-600 font-medium leading-relaxed mb-8 space-y-4 text-lg" dangerouslySetInnerHTML={{ __html: data.body }} />
+                        {data.body && <div className="text-gray-600 font-medium leading-relaxed mb-8 space-y-4 text-lg" dangerouslySetInnerHTML={{ __html: data.body }} />}
 
                         <p className="text-primary-700 font-bold mb-5 bg-primary-50 border-l-4 border-primary-300 px-4 py-2 rounded-r-lg">{data.listTitle || 'Paid programs become valuable when:'}</p>
                         <ul className="space-y-4">
@@ -241,7 +241,7 @@ export function CoursesConnecting({ data }) {
         <section className="py-24 px-6 text-center relative z-10">
             <div className="max-w-3xl mx-auto">
                 <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight leading-tight mb-8">{data.heading}</h2>
-                <div className="space-y-6 text-gray-600 font-medium leading-relaxed text-lg md:text-xl mb-10" dangerouslySetInnerHTML={{ __html: data.body }} />
+                {data.body && <div className="space-y-6 text-gray-600 font-medium leading-relaxed text-lg md:text-xl mb-10" dangerouslySetInnerHTML={{ __html: data.body }} />}
             </div>
         </section>
     )

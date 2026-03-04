@@ -53,7 +53,7 @@ export function ContactFormSection({ data }) {
                             <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-6 tracking-tight">
                                 {data.heading || 'Contact Us'}
                             </h2>
-                            <div className="text-gray-600 leading-relaxed space-y-4 mb-10" dangerouslySetInnerHTML={{ __html: data.body }} />
+                            {data.body && <div className="text-gray-600 leading-relaxed space-y-4 mb-10" dangerouslySetInnerHTML={{ __html: data.body }} />}
                         </Reveal>
 
                         <Reveal delay={0.1}>

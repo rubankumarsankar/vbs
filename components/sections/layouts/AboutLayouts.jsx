@@ -66,7 +66,7 @@ export function AboutIntro({ data }) {
             <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-accent-400/5 rounded-full blur-[80px] pointer-events-none" />
             <Container className="max-w-4xl relative z-10">
                 <Reveal>
-                    <div className="text-lg text-gray-600 font-medium leading-relaxed mb-16 whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: data.body }} />
+                    {data.body && <div className="text-lg text-gray-600 font-medium leading-relaxed mb-16 whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: data.body }} />}
                 </Reveal>
 
                 <div className="grid md:grid-cols-2 gap-8">

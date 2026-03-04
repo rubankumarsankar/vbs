@@ -7,12 +7,115 @@ import { showWarning, showError, showSuccess } from '@/lib/swal'
 
 import SectionFormBuilder from '@/components/admin/SectionFormBuilder'
 import { SECTION_TEMPLATES } from '@/lib/section-templates'
+import { HiOutlineCheckCircle, HiOutlineStar } from 'react-icons/hi'
 
 const typeLabels = {
     hero: '🦸 Hero Breakout',
     cards: '🃏 Content Cards',
     text: '📄 Dynamic Text',
     cta: '📣 Call to Action',
+}
+
+// Visual preview renderer — shows a structural mockup of the template data
+function PreviewRenderer({ template }) {
+    const d = template.data
+    const isHero = template.category === 'hero'
+    const isDark = isHero
+
+    return (
+        <div className="space-y-4">
+            {/* Tag */}
+            {d.tag && (
+                <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-cyan-600 bg-cyan-50 px-2.5 py-1 rounded-full">
+                    {d.tag}
+                </span>
+            )}
+
+            {/* Heading */}
+            {d.heading && (
+                <h3 className={`text-xl font-extrabold tracking-tight leading-tight ${isDark ? 'text-gray-100' : 'text-gray-900'}`}>
+                    {d.heading.replace('|', ' ')}
+                </h3>
+            )}
+
+            {/* Subheading */}
+            {d.subheading && (
+                <p className="text-sm text-gray-500 font-medium leading-relaxed">{d.subheading}</p>
+            )}
+
+            {/* Cards Preview */}
+            {d.cards && d.cards.length > 0 && (
+                <div className={`grid gap-3 ${d.cards.length <= 2 ? 'grid-cols-2' : d.cards.length === 4 ? 'grid-cols-2' : 'grid-cols-3'}`}>
+                    {d.cards.map((card, i) => (
+                        <div key={i} className="bg-gray-50 border border-gray-200 rounded-xl p-3 text-left">
+                            <p className="text-xs font-bold text-gray-800 mb-1">{card.title || card.name || card.value || card.level || `Card ${i + 1}`}</p>
+                            {card.description && <p className="text-[10px] text-gray-500 font-medium line-clamp-2">{card.description}</p>}
+                            {card.quote && <p className="text-[10px] text-gray-500 font-medium italic line-clamp-2">&ldquo;{card.quote}&rdquo;</p>}
+                            {card.price && <p className="text-sm font-black text-gray-900 mt-1">{card.price}<span className="text-[10px] text-gray-400 font-medium">{card.period}</span></p>}
+                            {card.features && (
+                                <ul className="mt-1.5 space-y-0.5">
+                                    {card.features.slice(0, 3).map((f, j) => (
+                                        <li key={j} className="text-[9px] text-gray-500 flex items-center gap-1">
+                                            <HiOutlineCheckCircle className="text-green-500 text-[10px] shrink-0" /> {f}
+                                        </li>
+                                    ))}
+                                    {card.features.length > 3 && <li className="text-[9px] text-gray-400">+{card.features.length - 3} more</li>}
+                                </ul>
+                            )}
+                            {card.rating && (
+                                <div className="flex gap-0.5 mt-1">
+                                    {Array.from({ length: card.rating }).map((_, j) => <HiOutlineStar key={j} className="text-amber-400 text-[10px]" />)}
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            )}
+
+            {/* FAQ Items Preview */}
+            {d.items && d.items.length > 0 && (
+                <div className="space-y-2">
+                    {d.items.slice(0, 3).map((item, i) => (
+                        <div key={i} className="bg-gray-50 border border-gray-200 rounded-xl p-3">
+                            <p className="text-xs font-bold text-gray-800">{item.question || item.title || `${item.year}: ${item.title}`}</p>
+                            {item.answer && <p className="text-[10px] text-gray-500 mt-1 line-clamp-2">{item.answer}</p>}
+                            {item.description && <p className="text-[10px] text-gray-500 mt-1 line-clamp-2">{item.description}</p>}
+                        </div>
+                    ))}
+                    {d.items.length > 3 && <p className="text-[10px] text-gray-400 font-medium text-center">+{d.items.length - 3} more items</p>}
+                </div>
+            )}
+
+            {/* Body text */}
+            {d.body && !d.cards && (
+                <div className="text-xs text-gray-600 font-medium leading-relaxed bg-gray-50 border border-gray-200 rounded-xl p-3" dangerouslySetInnerHTML={{ __html: d.body }} />
+            )}
+
+            {/* Checklist */}
+            {d.checklist && (
+                <ul className="space-y-1.5">
+                    {d.checklist.map((item, i) => (
+                        <li key={i} className="flex items-center gap-2 text-xs text-gray-700 font-medium">
+                            <HiOutlineCheckCircle className="text-green-500 text-sm shrink-0" /> {item}
+                        </li>
+                    ))}
+                </ul>
+            )}
+
+            {/* CTA buttons */}
+            {(d.ctaText || d.secondaryCtaText) && (
+                <div className="flex gap-2 pt-2">
+                    {d.ctaText && <span className="text-[10px] font-bold bg-cyan-500 text-white px-3 py-1.5 rounded-lg">{d.ctaText}</span>}
+                    {d.secondaryCtaText && <span className="text-[10px] font-bold bg-gray-100 text-gray-600 px-3 py-1.5 rounded-lg border">{d.secondaryCtaText}</span>}
+                </div>
+            )}
+
+            {/* Footer text */}
+            {d.footerText && (
+                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider pt-2 border-t border-gray-100">{d.footerText}</p>
+            )}
+        </div>
+    )
 }
 
 function SectionRow({ section, onToggle, onSave, onMoveUp, onMoveDown, isFirst, isLast }) {
@@ -87,6 +190,9 @@ function SectionsManager() {
     const [loading, setLoading] = useState(true)
     const [addingTemplate, setAddingTemplate] = useState(false)
     const [isPosting, setIsPosting] = useState(false)
+    const [previewTemplate, setPreviewTemplate] = useState(null)
+    const [templateSearch, setTemplateSearch] = useState('')
+    const [templateCategory, setTemplateCategory] = useState('all')
     const searchParams = useSearchParams()
     const pageId = searchParams.get('pageId')
 
@@ -237,60 +343,165 @@ function SectionsManager() {
                 )}
             </div>
 
-            {/* Template Selection Modal */}
+            {/* Layout Library Modal with Preview */}
             {addingTemplate && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-gray-900/60 backdrop-blur-sm animate-in fade-in duration-200">
-                    <div className="bg-white rounded-[2rem] shadow-2xl w-full max-w-5xl max-h-[90vh] flex flex-col overflow-hidden ring-1 ring-gray-900/5">
+                    <div className="bg-white rounded-[2rem] shadow-2xl w-full max-w-6xl max-h-[90vh] flex flex-col overflow-hidden ring-1 ring-gray-900/5">
 
-                        <div className="px-8 py-6 border-b border-gray-100 flex items-center justify-between bg-white z-10">
+                        {/* Header */}
+                        <div className="px-8 py-5 border-b border-gray-100 flex items-center justify-between bg-white z-10">
                             <div>
                                 <h2 className="text-2xl font-extrabold text-gray-900 tracking-tight">Layout Library</h2>
-                                <p className="text-gray-500 text-sm mt-1 font-medium">Select a predefined structural template to inject into your page.</p>
+                                <p className="text-gray-500 text-sm mt-1 font-medium">Click a template to preview, then inject into your page.</p>
                             </div>
                             <button
-                                onClick={() => setAddingTemplate(false)}
+                                onClick={() => { setAddingTemplate(false); setPreviewTemplate(null); setTemplateSearch(''); setTemplateCategory('all') }}
                                 className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-red-50 hover:text-red-500 transition-colors font-bold text-xl"
                             >
                                 &times;
                             </button>
                         </div>
 
-                        <div className="flex-1 overflow-y-auto p-8 bg-gray-50/50">
-                            {['hero', 'cards', 'text', 'cta'].map(category => {
-                                const categoryTemplates = SECTION_TEMPLATES.filter(t => t.category === category)
-                                if (categoryTemplates.length === 0) return null
+                        {/* Search + Category Tabs */}
+                        <div className="px-8 py-4 border-b border-gray-50 bg-gray-50/50 flex flex-col sm:flex-row gap-3">
+                            <div className="relative flex-1">
+                                <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                                <input
+                                    type="text"
+                                    value={templateSearch}
+                                    onChange={(e) => setTemplateSearch(e.target.value)}
+                                    placeholder="Search layouts..."
+                                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-white text-gray-900 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500/20 focus:border-cyan-400"
+                                />
+                            </div>
+                            <div className="flex gap-1 bg-white p-1 rounded-xl border border-gray-100 shrink-0">
+                                {['all', 'hero', 'cards', 'text', 'cta'].map((cat) => (
+                                    <button
+                                        key={cat}
+                                        onClick={() => setTemplateCategory(cat)}
+                                        className={`px-3 py-2 rounded-lg text-xs font-bold capitalize transition-all ${templateCategory === cat
+                                            ? 'bg-cyan-50 text-cyan-700 shadow-sm'
+                                            : 'text-gray-500 hover:text-gray-700'
+                                            }`}
+                                    >
+                                        {cat === 'all' ? 'All' : cat === 'cta' ? 'CTA' : cat}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
 
-                                return (
-                                    <div key={category} className="mb-10 last:mb-0">
-                                        <h3 className="text-sm font-black text-gray-400 uppercase tracking-wider mb-4 border-b border-gray-200 pb-2">
-                                            {category === 'cta' ? 'Calls to Action' : category} Templates
-                                        </h3>
-                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                            {categoryTemplates.map(template => (
-                                                <div
-                                                    key={template.id}
-                                                    onClick={() => !isPosting && handleAddTemplate(template)}
-                                                    className={`bg-white border-2 border-transparent p-5 rounded-2xl shadow-sm text-left group transition-all cursor-pointer ring-1 ring-gray-100 hover:shadow-lg hover:ring-cyan-500 hover:border-cyan-100 ${isPosting ? 'opacity-50 pointer-events-none' : ''}`}
-                                                >
-                                                    <div className="w-10 h-10 bg-gray-50 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform group-hover:bg-cyan-50">
-                                                        {category === 'hero' ? '🦸' : category === 'cards' ? '🃏' : category === 'cta' ? '📣' : '📄'}
+                        {/* Body — Split view */}
+                        <div className="flex-1 flex overflow-hidden min-h-0">
+                            {/* Left: Template List */}
+                            <div className="w-full sm:w-[45%] lg:w-[40%] overflow-y-auto border-r border-gray-100 p-4 space-y-2 bg-white">
+                                {(() => {
+                                    const filtered = SECTION_TEMPLATES.filter(t => {
+                                        if (templateCategory !== 'all' && t.category !== templateCategory) return false
+                                        if (templateSearch) {
+                                            const q = templateSearch.toLowerCase()
+                                            return t.name.toLowerCase().includes(q) || t.description.toLowerCase().includes(q)
+                                        }
+                                        return true
+                                    })
+
+                                    if (filtered.length === 0) {
+                                        return <p className="text-gray-400 text-sm font-medium text-center py-10">No templates found.</p>
+                                    }
+
+                                    return filtered.map(template => (
+                                        <div
+                                            key={template.id}
+                                            onClick={() => setPreviewTemplate(template)}
+                                            className={`p-4 rounded-2xl cursor-pointer transition-all border-2 ${previewTemplate?.id === template.id
+                                                ? 'bg-cyan-50 border-cyan-400 shadow-md'
+                                                : 'bg-white border-transparent hover:bg-gray-50 hover:border-gray-200'
+                                                }`}
+                                        >
+                                            <div className="flex items-start gap-3">
+                                                <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-base shrink-0 ${previewTemplate?.id === template.id ? 'bg-cyan-100' : 'bg-gray-50'}`}>
+                                                    {template.category === 'hero' ? '🦸' : template.category === 'cards' ? '🃏' : template.category === 'cta' ? '📣' : '📄'}
+                                                </div>
+                                                <div className="min-w-0">
+                                                    <h4 className={`font-bold text-sm leading-tight ${previewTemplate?.id === template.id ? 'text-cyan-800' : 'text-gray-900'}`}>{template.name}</h4>
+                                                    <p className="text-[11px] text-gray-500 font-medium mt-0.5 line-clamp-2">{template.description}</p>
+                                                    <span className="inline-block mt-1.5 text-[10px] font-bold text-gray-400 uppercase tracking-wider bg-gray-50 px-2 py-0.5 rounded">{template.type}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))
+                                })()}
+                            </div>
+
+                            {/* Right: Preview Panel */}
+                            <div className="hidden sm:flex flex-1 flex-col bg-gray-50 overflow-y-auto">
+                                {previewTemplate ? (
+                                    <>
+                                        {/* Preview Header */}
+                                        <div className="sticky top-0 z-10 bg-white/80 backdrop-blur-xl border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+                                            <div>
+                                                <h3 className="font-extrabold text-gray-900 text-base">{previewTemplate.name}</h3>
+                                                <p className="text-xs text-gray-500 font-medium">{previewTemplate.description}</p>
+                                            </div>
+                                            <button
+                                                onClick={() => !isPosting && handleAddTemplate(previewTemplate)}
+                                                disabled={isPosting}
+                                                className="btn-primary text-sm py-2.5 px-5 shadow-lg disabled:opacity-50 flex items-center gap-2 shrink-0"
+                                            >
+                                                {isPosting ? (
+                                                    <><span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Injecting...</>
+                                                ) : (
+                                                    <>⚡ Inject into Page</>
+                                                )}
+                                            </button>
+                                        </div>
+
+                                        {/* Live Preview */}
+                                        <div className="flex-1 p-6">
+                                            <div className="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
+                                                {/* Mini browser chrome */}
+                                                <div className="flex items-center gap-2 px-4 py-2.5 bg-gray-50 border-b border-gray-200">
+                                                    <div className="flex gap-1.5">
+                                                        <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
+                                                        <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+                                                        <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
                                                     </div>
-                                                    <h4 className="font-extrabold text-gray-900 text-base mb-1 group-hover:text-cyan-700">{template.name}</h4>
-                                                    <p className="text-xs text-gray-500 font-medium leading-relaxed">{template.description}</p>
-
-                                                    <div className="mt-4 pt-4 border-t border-gray-50 flex items-center justify-between">
-                                                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">{template.type} block</span>
-                                                        <span className="text-xs font-bold text-cyan-600 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">
-                                                            Inject &rarr;
-                                                        </span>
+                                                    <div className="flex-1 bg-white rounded-md px-3 py-1 text-[10px] text-gray-400 font-mono ml-3">
+                                                        preview — {previewTemplate.type} block
                                                     </div>
                                                 </div>
-                                            ))}
+
+                                                {/* Preview Content */}
+                                                <div className="p-6 space-y-4 max-h-[50vh] overflow-y-auto">
+                                                    {/* Structural Preview */}
+                                                    <PreviewRenderer template={previewTemplate} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div className="flex-1 flex items-center justify-center text-center p-8">
+                                        <div>
+                                            <p className="text-5xl mb-4">👈</p>
+                                            <h3 className="text-lg font-extrabold text-gray-400">Select a Layout</h3>
+                                            <p className="text-sm text-gray-400 font-medium mt-1">Click any template to preview it here.</p>
                                         </div>
                                     </div>
-                                )
-                            })}
+                                )}
+                            </div>
                         </div>
+
+                        {/* Mobile: Inject button for selected template (when no right panel visible) */}
+                        {previewTemplate && (
+                            <div className="sm:hidden px-6 py-4 border-t border-gray-100 bg-white">
+                                <button
+                                    onClick={() => !isPosting && handleAddTemplate(previewTemplate)}
+                                    disabled={isPosting}
+                                    className="btn-primary w-full text-sm py-3"
+                                >
+                                    {isPosting ? 'Injecting...' : `⚡ Inject "${previewTemplate.name}"`}
+                                </button>
+                            </div>
+                        )}
                     </div>
                 </div>
             )}

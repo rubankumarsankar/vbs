@@ -31,8 +31,7 @@ export default function TextSection({ data }) {
                         </Reveal>
 
                         <Reveal delay={0.2}>
-                            <div className="text-lg text-gray-600 font-medium leading-relaxed mb-8 whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: data.body }}>
-                            </div>
+                            {data.body && <div className="text-lg text-gray-600 font-medium leading-relaxed mb-8 whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: data.body }}></div>}
                         </Reveal>
                     </div>
 

@@ -25,9 +25,17 @@ export default async function AdminBlogDashboard() {
                             Manage your content marketing, SEO articles, and engineering updates.
                         </p>
                     </div>
-                    <Link href="/admin/blog/new" className="btn-primary py-3 px-6 shadow-sm inline-flex">
-                        + Write Post
-                    </Link>
+                    <div className="flex items-center gap-3">
+                        <Link href="/admin/blog/categories" className="btn-secondary py-3 px-6 shadow-sm inline-flex bg-gray-50 hover:bg-gray-100 text-gray-700 font-bold rounded-xl transition-colors">
+                            Categories
+                        </Link>
+                        <Link href="/admin/blog/authors" className="btn-secondary py-3 px-6 shadow-sm inline-flex bg-gray-50 hover:bg-gray-100 text-gray-700 font-bold rounded-xl transition-colors">
+                            Authors
+                        </Link>
+                        <Link href="/admin/blog/new" className="btn-primary py-3 px-6 shadow-sm inline-flex ml-2">
+                            + Write Post
+                        </Link>
+                    </div>
                 </div>
 
                 <div className="bg-white border text-gray-900 border-gray-100 rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.03)] overflow-hidden">

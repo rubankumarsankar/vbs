@@ -145,7 +145,7 @@ export function DSAIImpact({ data }) {
                             </div>
                             <h2 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight leading-tight">{data.heading}</h2>
                         </div>
-                        <div className="space-y-6 text-gray-600 font-medium leading-relaxed text-lg" dangerouslySetInnerHTML={{ __html: data.body }} />
+                        {data.body && <div className="space-y-6 text-gray-600 font-medium leading-relaxed text-lg" dangerouslySetInnerHTML={{ __html: data.body }} />}
                     </div>
 
                     <div className="space-y-4 mt-2">

@@ -161,7 +161,7 @@ export function HomeChallenge({ data }) {
                     <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight">{data.heading}</h2>
                 </div>
                 <div className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12">
-                    <div className="space-y-6 text-gray-300 font-medium leading-relaxed text-[16px] md:text-[18px]" dangerouslySetInnerHTML={{ __html: data.body }} />
+                    {data.body && <div className="space-y-6 text-gray-300 font-medium leading-relaxed text-[16px] md:text-[18px]" dangerouslySetInnerHTML={{ __html: data.body }} />}
                 </div>
             </div>
         </section>
