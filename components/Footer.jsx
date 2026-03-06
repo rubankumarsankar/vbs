@@ -7,8 +7,8 @@ const footerLinks = {
     'Quick Links': [
         { label: 'About', href: '/about' },
         { label: 'What should I learn', href: '/digital-skills' },
-        { label: 'Where should I learn it', href: '/courses-certifications' },
-        { label: 'What does this lead to', href: '/career-guides' },
+        { label: 'Where should I learn it?', href: '/courses-certifications' },
+        { label: 'What does this lead to?', href: '/career-guides' },
         { label: 'Contact', href: '/contact' },
     ],
     'Tools': [

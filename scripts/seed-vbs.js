@@ -27,11 +27,14 @@ async function main() {
       order: 1,
       isActive: true,
       data: {
-        heading: 'Make Smarter Decisions About Digital Skills, Courses, and Careers',
+        layout: 'home_hero',
+        tag: 'Virginia Business Solutions',
+        heading: 'Make Smarter Decisions About|Digital Skills, Courses, and Careers',
         subheading: 'Clear guidance for students and working professionals in India, without hype or shortcuts',
         ctaText: 'Explore Digital Skills →',
         ctaHref: '/digital-skills',
-        trustBadge: 'Make smarter decisions about digital skills, courses, and careers',
+        secondaryCtaText: 'Learn About Us',
+        secondaryCtaHref: '/about',
       }
     },
     {
@@ -39,22 +42,35 @@ async function main() {
       order: 2,
       isActive: true,
       data: {
+        layout: 'home_audience',
         heading: 'Who is this for?',
         cards: [
           {
             title: 'Students',
-            description: 'You’re exploring digital careers and want to understand where to begin. There are countless skills, tools, and courses competing for your attention. Before choosing your first step, you want clarity on what truly matters.',
-            icon: '🎓'
+            icon: 'HiOutlineAcademicCap',
+            lines: [
+              "You\u2019re exploring digital careers and want to understand where to begin.",
+              "There are countless skills, tools, and courses competing for your attention.",
+              "Before choosing your first step, you want clarity on what truly matters."
+            ]
           },
           {
             title: 'Early Career Professionals',
-            description: 'You’ve entered the workforce and want to strengthen your direction. Certifications and skill upgrades promise growth, but not all paths move you forward. Before investing your time and effort, you want clarity on what adds real value.',
-            icon: '🚀'
+            icon: 'HiOutlineBriefcase',
+            lines: [
+              "You\u2019ve entered the workforce and want to strengthen your direction.",
+              "Certifications and skill upgrades promise growth, but not all paths move you forward.",
+              "Before investing your time and effort, you want clarity on what adds real value."
+            ]
           },
           {
             title: 'Working Professionals',
-            description: 'You’re considering upskilling or transitioning into a digital role. The landscape is evolving quickly, and staying relevant requires thoughtful choices. Before committing your time and money, you want clarity about your next move.',
-            icon: '💼'
+            icon: 'HiOutlineUserGroup',
+            lines: [
+              "You\u2019re considering upskilling or transitioning into a digital role.",
+              "The landscape is evolving quickly, and staying relevant requires thoughtful choices.",
+              "Before committing your time and money, you want clarity about your next move."
+            ]
           }
         ]
       }
@@ -64,19 +80,41 @@ async function main() {
       order: 3,
       isActive: true,
       data: {
+        layout: 'home_challenge',
+        tag: 'The Challenge',
         heading: 'Why Choosing Digital Skills Today Feels Confusing',
-        body: 'The digital space has expanded rapidly over the last few years. New tools, certifications, and roles appear almost every month, each claiming to offer better opportunities and faster growth.\n\nSocial media platforms amplify success stories, while course providers promise quick results.\n\nAt the same time, automation and AI are reshaping how work is done, making it harder to understand which skills will remain valuable long term.\n\nFor students and professionals alike, the challenge is not a lack of options, it’s an excess of them.\n\nWithout a clear structure, it becomes difficult to separate foundational skills from temporary trends.',
-        tag: 'The Challenge'
+        body: '<p>The digital space has expanded rapidly over the last few years. New tools, certifications, and roles appear almost every month, each claiming to offer better opportunities and faster growth.</p><p>Social media platforms amplify success stories, while course providers promise quick results.</p><p>At the same time, automation and AI are reshaping how work is done, making it harder to understand which skills will remain valuable long term.</p><p>For students and professionals alike, the challenge is not a lack of options \u2014 it\u2019s an excess of them.</p><p>Without a clear structure, it becomes difficult to separate foundational skills from temporary trends.</p>',
       }
     },
     {
-      type: 'text',
+      type: 'cards',
       order: 4,
       isActive: true,
       data: {
+        layout: 'home_framework',
+        tag: 'Our Approach',
         heading: 'A Clear Framework for Smarter Career Decisions',
-        body: 'Making informed decisions becomes easier when you follow a clear structure. Instead of chasing trends or reacting to noise, a structured approach helps you understand what to learn, where to learn it, and how it connects to real career outcomes.',
-        tag: 'The Solution'
+        subheading: 'Making informed decisions becomes easier when you follow a clear structure. Instead of chasing trends or reacting to noise, a structured approach helps you understand what to learn, where to learn it, and how it connects to real career outcomes.',
+        cards: [
+          {
+            title: 'Digital Skills',
+            icon: 'HiOutlineLightningBolt',
+            description: 'Understand which digital skills are foundational and which are temporary trends. Explore how different skills connect to real-world roles and where AI is reshaping expectations.',
+            href: '/digital-skills'
+          },
+          {
+            title: 'Courses & Certifications',
+            icon: 'HiOutlineBookOpen',
+            description: 'Evaluate learning paths with clarity. Compare free and paid options, structured programs, and certifications to choose what aligns with your stage and goals.',
+            href: '/courses-certifications'
+          },
+          {
+            title: 'Career Guides',
+            icon: 'HiOutlineTrendingUp',
+            description: 'See how skills and courses translate into career pathways. Understand role expectations, growth trajectories, and how to stay relevant in a changing landscape.',
+            href: '/career-guides'
+          }
+        ]
       }
     },
     {
@@ -84,41 +122,56 @@ async function main() {
       order: 5,
       isActive: true,
       data: {
-        heading: 'Our Core Pillars',
+        layout: 'home_standards',
+        tag: 'Our Standards',
+        heading: 'How Recommendations Are Evaluated',
         cards: [
           {
-            title: 'Digital Skills',
-            description: 'Understand which digital skills are foundational and which are temporary trends. Explore how different skills connect to real-world roles and where AI is reshaping expectations.',
-            icon: '💻'
+            title: 'Practical Relevance',
+            icon: 'HiOutlineCheckCircle',
+            description: 'Does this skill or course reflect how work is actually done today?'
           },
           {
-            title: 'Courses & Certifications',
-            description: 'Evaluate learning paths with clarity. Compare free and paid options, structured programs, and certifications to choose what aligns with your stage and goals.',
-            icon: '📜'
+            title: 'Learning Depth',
+            icon: 'HiOutlineEye',
+            description: 'Does it build real understanding, not just surface familiarity?'
           },
           {
-            title: 'Career Guides',
-            description: 'See how skills and courses translate into career pathways. Understand role expectations, growth trajectories, and how to stay relevant in a changing landscape.',
-            icon: '🧭'
+            title: 'Curriculum Clarity',
+            icon: 'HiOutlineTemplate',
+            description: 'Is the structure transparent, structured, and outcome-oriented?'
+          },
+          {
+            title: 'Long-Term Value',
+            icon: 'HiOutlineClock',
+            description: 'Will this knowledge remain useful beyond short-term trends?'
+          },
+          {
+            title: 'Stage Alignment',
+            icon: 'HiOutlineScale',
+            description: 'Is it suitable for beginners, early professionals, or experienced learners?'
+          },
+          {
+            title: 'Balanced Options',
+            icon: 'HiOutlineShieldCheck',
+            description: 'Are free and paid paths both considered based on value, not marketing?'
           }
         ]
       }
     },
     {
-      type: 'text',
+      type: 'cta',
       order: 6,
       isActive: true,
       data: {
-        heading: 'How Recommendations Are Evaluated',
-        tag: 'Our Criteria',
-        checklist: [
-          'Practical Relevance: Does this skill or course reflect how work is actually done today?',
-          'Learning Depth: Does it build real understanding, not just surface familiarity?',
-          'Curriculum Clarity: Is the structure transparent, structured, and outcome-oriented?',
-          'Long-Term Value: Will this knowledge remain useful beyond short-term trends?',
-          'Stage Alignment: Is it suitable for beginners, early professionals, or experienced learners?',
-          'Balanced Options: Are free and paid paths both considered based on value, not marketing?'
-        ]
+        layout: 'generic_contact_cta',
+        tag: 'Get In Touch',
+        heading: 'Ready to Discuss Your Next Step?',
+        body: 'Whether you are a student exploring options or a professional planning a pivot, we can provide clarity.',
+        ctaText: 'Reach out to us',
+        ctaHref: '/contact',
+        secondaryCtaText: 'Browse Insights',
+        secondaryCtaHref: '/blog'
       }
     }
   ]
@@ -129,9 +182,9 @@ async function main() {
     })
   }
 
-  console.log('✅ VBS Homepage content seeded')
+  console.log('✅ VBS Homepage content seeded (7 sections)')
 
-  // Phase 7: Seed Site Settings
+  // Update Site Settings (navLinks + footerText)
   const defaultSettings = {
     siteName: 'Virginia Business Solutions',
     logoUrl: '',

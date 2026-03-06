@@ -16,11 +16,11 @@ export default function Navbar({ settings }) {
     const logoUrl = settings?.logoUrl || ''
 
     const navLinks = settings?.navLinks || [
-        { label: 'About Us', url: '/about' },
-        { label: 'Service', url: '/digital-skills' },
-        { label: 'Hire Developer', url: '/courses-certifications' },
-        { label: 'Case Studies', url: '/career-guides' },
-        { label: 'Blogs', url: '/blog' },
+        { label: 'About', url: '/about' },
+        { label: 'What should I learn', url: '/digital-skills' },
+        { label: 'Where should I learn it?', url: '/courses-certifications' },
+        { label: 'What does this lead to?', url: '/career-guides' },
+        { label: 'Blog', url: '/blog' },
     ]
 
     const checkActive = (url) => {
