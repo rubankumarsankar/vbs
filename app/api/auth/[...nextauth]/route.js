@@ -46,6 +46,13 @@ export const authOptions = {
   secret: process.env.NEXTAUTH_SECRET || "i29s5gjAmhw/rK98XbHRyt155diV0cJVwHZiS3BsB6WI=",
   trustHost: true,
   callbacks: {
+    async redirect({ url, baseUrl }) {
+      // Allow relative URLs
+      if (url.startsWith('/')) return `${baseUrl}${url}`
+      // Allow same-origin URLs
+      if (new URL(url).origin === baseUrl) return url
+      return baseUrl
+    },
     async jwt({ token, user, trigger, session }) {
       if (user) {
         token.role = user.role
