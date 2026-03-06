@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server'
-import { GoogleGenAI } from '@google/genai'
+import OpenAI from 'openai'
 
-// Allow larger body sizes and timeouts for document uploads
-export const maxDuration = 60; // 60 seconds
+export const maxDuration = 60;
 
 export async function POST(request) {
     try {
@@ -13,18 +12,16 @@ export async function POST(request) {
             return NextResponse.json({ error: 'No text content provided.' }, { status: 400 })
         }
 
-        const apiKey = process.env.GEMINI_API_KEY
+        const apiKey = process.env.OPENAI_API_KEY
         if (!apiKey) {
             return NextResponse.json(
-                { error: 'Gemini API Key is missing. Please add GEMINI_API_KEY to your .env file.' },
+                { error: 'OpenAI API Key is missing. Please add OPENAI_API_KEY to your .env file.' },
                 { status: 500 }
             )
         }
 
-        // Initialize Gemini SDK
-        const ai = new GoogleGenAI({ apiKey })
+        const openai = new OpenAI({ apiKey })
 
-        // Detailed prompt asking it to structure a blog post and return JSON
         const prompt = `
 You are a senior technical writer and blog editor for a digital skills academy called VBS (Virginia Business Solutions).
 
@@ -50,28 +47,36 @@ ${textContent}
 """
 `
 
-        // Call Gemini 2.5 Flash for fast textual processing
-        const response = await ai.models.generateContent({
-            model: 'gemini-2.5-flash',
-            contents: prompt,
-            config: {
-                responseMimeType: "application/json",
-            }
-        });
+        const response = await openai.chat.completions.create({
+            model: 'gpt-4o-mini',
+            messages: [
+                { role: 'system', content: 'You are a blog post generator. Always respond with valid JSON only, no extra text.' },
+                { role: 'user', content: prompt }
+            ],
+            response_format: { type: 'json_object' },
+            temperature: 0.7,
+        })
 
-        const resultJson = response.text
-        
+        const resultJson = response.choices[0].message.content
+
         if (!resultJson) {
-            throw new Error('Gemini returned an empty response.')
+            throw new Error('ChatGPT returned an empty response.')
         }
 
-        // Parse JSON
         const parsedData = JSON.parse(resultJson)
 
         return NextResponse.json({ success: true, data: parsedData }, { status: 200 })
 
     } catch (error) {
         console.error('AI Generation Error:', error)
+
+        if (error?.status === 429) {
+            return NextResponse.json(
+                { error: 'ChatGPT quota exceeded. Please check your OpenAI billing at https://platform.openai.com/billing.' },
+                { status: 429 }
+            )
+        }
+
         return NextResponse.json(
             { error: error.message || 'Failed to generate content' },
             { status: 500 }
